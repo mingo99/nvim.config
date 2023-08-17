@@ -25,3 +25,6 @@ opt.splitbelow = true
 -- For search 
 opt.ignorecase = true
 opt.smartcase = true
+
+-- Colorscheme
+vim.cmd[[colorscheme tokyonight-moon]]

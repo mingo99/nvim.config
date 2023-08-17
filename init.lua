@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -12,10 +13,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load plugins
+require("lazy").setup("plugins")
+
 -- Load configuration
 require("config.autocmds")
 require("config.options")
 require("config.keymaps")
 
--- Load plugins
-require("lazy").setup("plugins")

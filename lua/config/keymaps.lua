@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+-- vim.g.mapleader = " "
 
 local function map(mode, lhs, rhs, opts)
     opts = opts or {}
@@ -10,7 +10,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- better escape insert or visual mode
-map("i", "jk", "<Esc>", { desc = "Escape insert mode" })
+map({ "i", "v" }, "jk", "<Esc>", { desc = "Escape insert mode" })
 map("v", "v", "<Esc>", { desc = "Escape visual mode" })
 map({ "n", "v" }, "J", "5j", { desc = "Fast move down" })
 map({ "n", "v" }, "K", "5k", { desc = "Fast move up" })
@@ -38,6 +38,9 @@ map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- Merge line
+map( "n", "<leader>j", "J", { desc = "Merge next line to current line" })
 
 -- buffers
 --if Util.has("bufferline.nvim") then
