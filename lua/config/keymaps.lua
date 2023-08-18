@@ -10,7 +10,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- better escape insert or visual mode
-map({ "i", "v" }, "jk", "<Esc>", { desc = "Escape insert mode" })
+map("i", "jk", "<Esc>", { desc = "Escape insert mode" })
 map("v", "v", "<Esc>", { desc = "Escape visual mode" })
 map({ "n", "v" }, "J", "5j", { desc = "Fast move down" })
 map({ "n", "v" }, "K", "5k", { desc = "Fast move up" })

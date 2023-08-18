@@ -27,4 +27,5 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- Colorscheme
-vim.cmd[[colorscheme tokyonight-moon]]
+vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd[[colorscheme catppuccin]]
