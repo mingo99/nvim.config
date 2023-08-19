@@ -2,30 +2,30 @@
 -- Add any additional options here
 local opt = vim.opt
 
--- Enable number and relativenumber of line 
+-- Enable number and relativenumber of line
 opt.relativenumber = true
 opt.number = true
 
--- Indent 
+-- Indent
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
--- Open mouse opration 
+-- Open mouse opration
 opt.mouse:append("a")
 
--- Communication with system clipboard 
+-- Communication with system clipboard
 opt.clipboard:append("unnamedplus")
 
--- New window will be on right an down 
+-- New window will be on right an down
 opt.splitright = true
 opt.splitbelow = true
 
--- For search 
-opt.ignorecase = true
+-- For search
+-- opt.ignorecase = true
 opt.smartcase = true
 
 -- Colorscheme
-vim.cmd[[colorscheme tokyonight]]
--- vim.cmd[[colorscheme catppuccin]]
+vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme catppuccin]])
