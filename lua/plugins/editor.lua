@@ -320,6 +320,14 @@ return {
 		},
 	},
 
+	-- fugitive is the premier vim plugin for git
+	-- url: https://github.com/tpope/vim-fugitive
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy",
+		cmd = "Git",
+	},
+
 	-- automatically highlights other instances of the word under your cursor
 	-- url: https://github.com/RRethy/vim-illuminate
 	{
