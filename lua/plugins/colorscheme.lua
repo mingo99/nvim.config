@@ -6,6 +6,7 @@ return {
 		lazy = true,
 		opts = { style = "Night" }, -- Storm, Night, Moon, Day
 	},
+
 	-- catppuccin
 	-- url: https://github.com/catppuccin/nvim
 	{
@@ -44,5 +45,19 @@ return {
 				which_key = true,
 			},
 		},
+	},
+
+	-- dark+
+	-- url: https://github.com/LunarVim/darkplus.nvim
+	{
+		"lunarvim/darkplus.nvim",
+		lazy = true,
+	},
+
+	-- onedark
+	-- url: https://github.com/joshdick/onedark.vim
+	{
+		"joshdick/onedark.vim",
+		lazy = true,
 	},
 }

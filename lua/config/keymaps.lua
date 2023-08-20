@@ -17,8 +17,6 @@ end
 -- better escape insert or visual mode
 map("i", "jk", "<Esc>", { desc = "Escape insert mode" })
 map("v", "v", "<Esc>", { desc = "Escape visual mode" })
-map({ "n", "v" }, "J", "5j", { desc = "Fast move down" })
-map({ "n", "v" }, "K", "5k", { desc = "Fast move up" })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count ? 'j' : 'gj'", { expr = true, silent = true })
@@ -43,9 +41,6 @@ map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
--- Merge line
-map("n", "<leader>j", "J", { desc = "Merge next line to current line" })
 
 -- buffers
 if Util.has("bufferline.nvim") then
@@ -126,6 +121,13 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
+-- floating terminal
+local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
+map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
+map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
@@ -140,8 +142,8 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>s", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>v", "<C-W>v", { desc = "Split window right", remap = true })
+-- map("n", "<leader>s", "<C-W>s", { desc = "Split window below", remap = true })
+-- map("n", "<leader>v", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
