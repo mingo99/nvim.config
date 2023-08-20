@@ -8,18 +8,21 @@ return {
 			end
 		end,
 	},
-	opts = {
-		servers = {
-			lua_ls = {
-				---@type LazyKeys[]
-				-- keys = {},
-				settings = {
-					Lua = {
-						workspace = {
-							checkThirdParty = false,
-						},
-						completion = {
-							callSnippet = "Replace",
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				lua_ls = {
+					---@type LazyKeys[]
+					-- keys = {},
+					settings = {
+						Lua = {
+							workspace = {
+								checkThirdParty = false,
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
 						},
 					},
 				},
@@ -60,6 +63,24 @@ return {
 						},
 					},
 				},
+			},
+		},
+	},
+
+	-- verilog
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = function(_, opts)
+			if type(opts.ensure_installed) == "table" then
+				vim.list_extend(opts.ensure_installed, { "verilog" })
+			end
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				verible = {},
 			},
 		},
 	},

@@ -29,7 +29,7 @@ opt.splitbelow = true
 opt.smartcase = true
 
 -- Colorscheme
--- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme catppuccin]])
-vim.cmd([[colorscheme darkplus]])
+-- vim.cmd([[colorscheme darkplus]])
 -- vim.cmd([[colorscheme onedark]])
