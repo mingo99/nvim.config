@@ -12,6 +12,8 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
+-- cursorline
+opt.cursorline = true
 -- Open mouse opration
 opt.mouse:append("a")
 
@@ -27,5 +29,7 @@ opt.splitbelow = true
 opt.smartcase = true
 
 -- Colorscheme
-vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme darkplus]])
+-- vim.cmd([[colorscheme onedark]])

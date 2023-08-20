@@ -112,6 +112,7 @@ return {
 				"toggleterm",
 				"lazyterm",
 			},
+			use_treesitter = true,
 			show_trailing_blankline_indent = false,
 			show_current_context = false,
 		},

@@ -105,10 +105,10 @@ return {
 	-- url: https://github.com/nvim-telescope/telescope.nvim
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		-- tag = "0.1.1",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		-- commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
-		-- version = false, -- telescope did only one release, so use HEAD for now
+		commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
+		version = false, -- telescope did only one release, so use HEAD for now
 		cmd = "Telescope",
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
