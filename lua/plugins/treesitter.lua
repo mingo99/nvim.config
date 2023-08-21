@@ -37,9 +37,6 @@ return {
 				"luap",
 				"javascript",
 				"jsdoc",
-				"json",
-				"json5",
-				"jsonc",
 				"markdown",
 				"markdown_inline",
 				"python",
@@ -47,7 +44,7 @@ return {
 				"regex",
 				"tsx",
 				"typescript",
-				"verilog",
+				-- "verilog",
 				"vim",
 				"vimdoc",
 				"yaml",
@@ -118,5 +115,20 @@ return {
 				end
 			end
 		end,
+	},
+
+	-- improves the Neovim built-in LSP experience.
+	-- url: https://github.com/nvimdev/lspsaga.nvim
+	{
+		"nvimdev/lspsaga.nvim",
+		event = "LspAttach",
+		ft = { "c", "cpp", "json", "lua", "verilog", "python" },
+		config = function()
+			require("lspsaga").setup({})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 	},
 }
