@@ -40,7 +40,36 @@ return {
 				timeout_ms = nil,
 			},
 			-- LSP Server Settings
-			servers = {},
+			servers = {
+
+				lua_ls = {
+					---@type LazyKeys[]
+					-- keys = {},
+					settings = {
+						Lua = {
+							workspace = {
+								checkThirdParty = false,
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+						},
+					},
+				},
+				jsonls = {
+					-- lazy-load schemastore when needed
+					on_new_config = function(new_config)
+						new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+						vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+					end,
+					settings = {
+						json = {
+							format = { enable = true },
+							validate = { enable = true },
+						},
+					},
+				},
+			},
 			setup = {},
 		},
 		---@param opts PluginLspOpts
@@ -71,7 +100,7 @@ return {
 			end
 
 			-- diagnostics
-			for name, icon in pairs(require("config").icons.diagnostics) do
+			for name, icon in pairs(require("util").icons.diagnostics) do
 				name = "DiagnosticSign" .. name
 				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 			end
@@ -89,7 +118,7 @@ return {
 			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
 				opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
 					or function(diagnostic)
-						local icons = require("config").icons.diagnostics
+						local icons = require("util").icons.diagnostics
 						for d, icon in pairs(icons) do
 							if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
 								return icon
@@ -233,7 +262,7 @@ return {
 				separator = " ",
 				highlight = true,
 				depth_limit = 5,
-				icons = require("config").icons.kinds,
+				icons = require("util").icons.kinds,
 			}
 		end,
 	},

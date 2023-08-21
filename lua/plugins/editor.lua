@@ -112,11 +112,13 @@ return {
 		cmd = "Telescope",
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-			{ "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			-- { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+			-- { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			{ "<leader>/", "<cmd>Telescope command_history<cr>", desc = "Command History" },
 			{ "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
 			-- find
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+			{ "<leader>fg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
 			{ "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
 			{ "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },

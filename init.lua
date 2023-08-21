@@ -1,5 +1,7 @@
+-- map leader to <space>
 vim.g.mapleader = " "
--- Lazy
+
+-- lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -13,10 +15,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load plugins
+-- load plugins
+-- path: ~/.config/nvim/lua/plugins
 require("lazy").setup("plugins")
 
--- Load configuration
-require("config.autocmds")
-require("config.keymaps")
-require("config.options")
+-- load configuration
+-- path: ~/.config/nvim/lua/config
+require("config")
