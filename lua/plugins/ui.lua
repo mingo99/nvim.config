@@ -299,5 +299,6 @@ return {
 	-- url: https://github.com/voldikss/vim-floaterm
 	{
 		"voldikss/vim-floaterm",
+		event = "VeryLazy",
 	},
 }

@@ -133,12 +133,14 @@ map("n", "<c-_>", "<cmd>FloatermToggle<cr>", { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
-map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
-map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
-map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
-map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+-- map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+-- map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+-- map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+-- map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+map("t", "<C-h>", "<cmd>FloatermPrev<cr>", { desc = "Go to previous terminal" })
+map("t", "<C-l>", "<cmd>FloatermNext<cr>", { desc = "Go to next terminal" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
@@ -155,3 +157,6 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- file explorer: joshuto
+map("n", "<leader>jso", "<cmd>FloatermNe --title=Joshuto --height=0.8 --width=0.8 joshuto <cr>", { desc = "Open Joshuto" })

@@ -1,6 +1,7 @@
 -- Reference options: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 local opt = vim.opt
+local g = vim.g
 
 -- Enable number and relativenumber of line
 opt.relativenumber = true
@@ -27,3 +28,6 @@ opt.splitbelow = true
 -- For search
 -- opt.ignorecase = true
 opt.smartcase = true
+
+-- For float terminal
+g.floaterm_title = "zsh: $1/$2"
