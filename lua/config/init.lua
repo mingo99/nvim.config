@@ -14,9 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
-require("config.autocmds")
-require("config.options")
-
 -- load plugins
 -- path: ~/.config/nvim/lua/plugins
 vim.opt.rtp:prepend(lazypath)
@@ -28,4 +25,6 @@ vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme darkplus]])
 -- vim.cmd([[colorscheme onedark]])
 
+require("config.autocmds")
+require("config.options")
 require("config.keymaps")
