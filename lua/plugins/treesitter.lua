@@ -119,16 +119,17 @@ return {
 
 	-- improves the Neovim built-in LSP experience.
 	-- url: https://github.com/nvimdev/lspsaga.nvim
-	{
-		"nvimdev/lspsaga.nvim",
-		event = "LspAttach",
-		ft = { "c", "cpp", "json", "lua", "verilog", "python" },
-		config = function()
-			require("lspsaga").setup({})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-	},
+	-- {
+	-- 	"nvimdev/lspsaga.nvim",
+	-- 	event = "LspAttach",
+	-- 	cmd = "Lspsaga",
+	-- 	ft = { "c", "cpp", "json", "lua", "verilog", "python" },
+	-- 	config = function()
+	-- 		require("lspsaga").setup({})
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter", -- optional
+	-- 		"nvim-tree/nvim-web-devicons", -- optional
+	-- 	},
+	-- },
 }

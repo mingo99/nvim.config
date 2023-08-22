@@ -294,4 +294,10 @@ return {
 	-- ui component library for neovim.
 	-- url: https://github.com/MunifTanjim/nui.nvim
 	{ "MunifTanjim/nui.nvim", lazy = true },
+
+	-- use neovim terminal in the floating/popup window.
+	-- url: https://github.com/voldikss/vim-floaterm
+	{
+		"voldikss/vim-floaterm",
+	},
 }
