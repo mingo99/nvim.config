@@ -300,5 +300,8 @@ return {
 	{
 		"voldikss/vim-floaterm",
 		event = "VeryLazy",
+		config = function()
+			vim.g.floaterm_title = "zsh: $1/$2"
+		end,
 	},
 }
