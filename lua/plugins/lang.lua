@@ -74,7 +74,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
 			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "verilog", "systemverilog" })
+				vim.list_extend(opts.ensure_installed, { "verilog" })
 			end
 		end,
 	},
@@ -105,5 +105,15 @@ return {
 				},
 			},
 		},
+	},
+
+	-- make
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = function(_, opts)
+			if type(opts.ensure_installed) == "table" then
+				vim.list_extend(opts.ensure_installed, { "make" })
+			end
+		end,
 	},
 }
