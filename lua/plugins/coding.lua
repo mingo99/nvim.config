@@ -74,17 +74,29 @@ return {
 
 	-- comment lines
 	-- url: https://github.com/echasnovski/mini.comment
+	-- {
+	-- 	"echasnovski/mini.comment",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		options = {
+	-- 			custom_commentstring = function()
+	-- 				return require("ts_context_commentstring.internal").calculate_commentstring()
+	-- 					or vim.bo.commentstring
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- },
+
+	-- comment functions so powerful—no comment necessary
+	-- url: https://github.com/preservim/nerdcommenter
 	{
-		"echasnovski/mini.comment",
+		"preservim/nerdcommenter",
 		event = "VeryLazy",
-		opts = {
-			options = {
-				custom_commentstring = function()
-					return require("ts_context_commentstring.internal").calculate_commentstring()
-						or vim.bo.commentstring
-				end,
-			},
-		},
+		config = function()
+			vim.g.NERDCreateDefaultMappings = 1
+			vim.g.NERDSpaceDelims = 1
+			vim.g.NERDCommentEmptyLines = 1
+		end,
 	},
 
 	-- a neovim plugin for setting the commentstring option based on the cursor location in the file
