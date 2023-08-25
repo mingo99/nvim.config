@@ -25,6 +25,7 @@ vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme darkplus]])
 -- vim.cmd([[colorscheme onedark]])
 
+require("config.usercmds")
 require("config.autocmds")
 require("config.options")
 require("config.keymaps")

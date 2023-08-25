@@ -159,4 +159,5 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- file explorer: joshuto
-map("n", "<leader>jso", "<cmd>FloatermNew --title=Joshuto --height=0.9 --width=0.9 joshuto <cr>", { desc = "Open Joshuto" })
+-- map("n", "<leader>jso", "<cmd>FloatermNew --title=Joshuto --height=0.9 --width=0.9 joshuto <cr>", { desc = "Open Joshuto" })
+map("n", "<leader>jso", "<cmd>Joshuto<cr>", { desc = "Open Joshuto" })
