@@ -58,7 +58,7 @@ return {
 		end,
 		init = function()
 			if vim.fn.argc() == 1 then
-				local stat = vim.loop.fs_stat(vim.fn.argv(0))
+				local stat = vim.loop.fs_stat(tostring(vim.fn.argv(0)))
 				if stat and stat.type == "directory" then
 					require("neo-tree")
 				end
@@ -533,6 +533,38 @@ return {
 			vim.g.mkdp_browser = ""
 			vim.g.mkdp_echo_preview_url = true
 			vim.g.mkdp_page_title = "${name}"
+		end,
+	},
+
+	-- rainbow surround
+	-- url: https://github.com/HiPhish/rainbow-delimiters.nvim
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		config = function()
+			-- This module contains a number of default definitions
+			local rainbow_delimiters = require("rainbow-delimiters")
+
+			vim.g.rainbow_delimiters = {
+				strategy = {
+					[""] = rainbow_delimiters.strategy["global"],
+					vim = rainbow_delimiters.strategy["local"],
+				},
+				query = {
+					[""] = "rainbow-delimiters",
+					lua = "rainbow-blocks",
+					verilog = "rainbow-blocks",
+				},
+				highlight = {
+					"RainbowDelimiterYellow",
+					"RainbowDelimiterBlue",
+					"RainbowDelimiterOrange",
+					"RainbowDelimiterGreen",
+					"RainbowDelimiterViolet",
+					"RainbowDelimiterCyan",
+					"RainbowDelimiterRed",
+				},
+				blacklist = {},
+			}
 		end,
 	},
 }

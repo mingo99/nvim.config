@@ -15,6 +15,9 @@ return {
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 			local cmp = require("cmp")
 			local defaults = require("cmp.config.default")()
+			-- If you want insert `(` after select function or method item
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -162,12 +165,20 @@ return {
 		end,
 	},
 
-	-- minimal and fast autopairs
-	-- url: https://github.com/echasnovski/mini.pairs
+	-- -- minimal and fast autopairs
+	-- -- url: https://github.com/echasnovski/mini.pairs
+	-- {
+	-- "echasnovski/mini.pairs",
+	-- event = "VeryLazy",
+	-- opts = {},
+	-- },
+
+	-- a super powerful autopair plugin for Neovim that supports multiple characters.
+	-- url: https://github.com/windwp/nvim-autopairs
 	{
-		"echasnovski/mini.pairs",
-		event = "VeryLazy",
-		opts = {},
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {}, -- this is equalent to setup({}) function
 	},
 
 	-- fast and feature-rich surround actions

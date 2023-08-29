@@ -59,7 +59,7 @@ return {
 			end)
 
 			local register_capability = vim.lsp.handlers["client/registerCapability"]
-
+			---@diagnostic disable-next-line
 			vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
 				local ret = register_capability(err, res, ctx)
 				local client_id = ctx.client_id

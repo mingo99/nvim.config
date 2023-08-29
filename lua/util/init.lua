@@ -210,6 +210,7 @@ function M.float_term(cmd, opts)
 		if opts.esc_esc == false then
 			vim.keymap.set("t", "<esc>", "<esc>", { buffer = buf, nowait = true })
 		end
+		---@diagnostic disable-next-line
 		if opts.ctrl_hjkl == false then
 			vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
 			vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
