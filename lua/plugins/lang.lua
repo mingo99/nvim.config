@@ -162,4 +162,11 @@ return {
 		opts = {},
 		keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
 	},
+
+	-- nushell
+	-- url:
+	{
+		"LhKipp/nvim-nu",
+		build = ":TSInstall nu",
+	},
 }
