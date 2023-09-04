@@ -122,25 +122,25 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 
 -- floating terminal
--- local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
--- map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
--- map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
--- map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
--- map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
-map("n", "<leader>ft", "<cmd>FloatermNew<cr>", { desc = "New terminal" })
-map("n", "<C-/>", "<cmd>FloatermToggle<cr>", { desc = "Toggle terminal" })
-map("n", "<c-_>", "<cmd>FloatermToggle<cr>", { desc = "which_key_ignore" })
+local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
+map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
+map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+-- map("n", "<leader>ft", "<cmd>FloatermNew<cr>", { desc = "New terminal" })
+-- map("n", "<C-/>", "<cmd>FloatermToggle<cr>", { desc = "Toggle terminal" })
+-- map("n", "<c-_>", "<cmd>FloatermToggle<cr>", { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
--- map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
--- map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
--- map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
--- map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-map("t", "<C-h>", "<cmd>FloatermPrev<cr>", { desc = "Go to previous terminal" })
-map("t", "<C-l>", "<cmd>FloatermNext<cr>", { desc = "Go to next terminal" })
+-- map("t", "<C-h>", "<cmd>FloatermPrev<cr>", { desc = "Go to previous terminal" })
+-- map("t", "<C-l>", "<cmd>FloatermNext<cr>", { desc = "Go to next terminal" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })

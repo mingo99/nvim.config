@@ -27,3 +27,7 @@ opt.splitbelow = true
 -- For search
 -- opt.ignorecase = true
 opt.smartcase = true
+
+-- Fold code
+opt.foldmethod = "indent"
+opt.foldlevel = 99
