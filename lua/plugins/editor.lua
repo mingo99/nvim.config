@@ -573,4 +573,14 @@ return {
 			}
 		end,
 	},
+
+	-- create code snippets in neovim
+	-- url: https://github.com/TobinPalmer/rayso.nvim
+	{
+		"TobinPalmer/rayso.nvim",
+		cmd = { "Rayso" },
+		config = function()
+			require("rayso").setup({})
+		end,
+	},
 }

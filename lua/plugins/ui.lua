@@ -504,6 +504,14 @@ return {
 
 			local animate = require("mini.animate")
 			return {
+				cursor = {
+					enable = true,
+					-- path = animate.gen_path.line({
+					-- predicate = function()
+					-- return true
+					-- end,
+					-- }),
+				},
 				resize = {
 					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
 				},
