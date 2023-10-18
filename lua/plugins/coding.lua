@@ -108,28 +108,29 @@ return {
 	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 
 	-- indent guides for Neovim
-	-- url: indent guides for Neovim
+	-- url: https://github.com/lukas-reineke/indent-blankline.nvim
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		main = "ibl",
+		-- event = { "BufReadPost", "BufNewFile" },
 		opts = {
-			-- char = "▏",
-			char = "│",
-			filetype_exclude = {
-				"help",
-				"alpha",
-				"dashboard",
-				"neo-tree",
-				"Trouble",
-				"lazy",
-				"mason",
-				"notify",
-				"toggleterm",
-				"lazyterm",
-			},
-			use_treesitter = true,
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
+			-- -- char = "▏",
+			-- char = "│",
+			-- filetype_exclude = {
+			-- "help",
+			-- "alpha",
+			-- "dashboard",
+			-- "neo-tree",
+			-- "Trouble",
+			-- "lazy",
+			-- "mason",
+			-- "notify",
+			-- "toggleterm",
+			-- "lazyterm",
+			-- },
+			-- use_treesitter = true,
+			-- show_trailing_blankline_indent = false,
+			-- show_current_context = false,
 		},
 	},
 
