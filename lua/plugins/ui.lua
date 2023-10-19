@@ -318,13 +318,13 @@ return {
 
 	-- use neovim terminal in the floating/popup window.
 	-- url: https://github.com/voldikss/vim-floaterm
-	-- {
-	-- "voldikss/vim-floaterm",
-	-- event = "VeryLazy",
-	-- config = function()
-	-- vim.g.floaterm_title = "Term: $1/$2"
-	-- end,
-	-- },
+	{
+		"voldikss/vim-floaterm",
+		event = "VeryLazy",
+		-- config = function()
+		-- vim.g.floaterm_title = "Term: $1/$2"
+		-- end,
+	},
 
 	-- create and manage predefined window layout_strats
 	-- url: https://github.com/folke/edgy.nvimdev
