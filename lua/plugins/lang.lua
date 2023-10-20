@@ -68,7 +68,14 @@ return {
 			},
 		},
 	},
-
+	{
+		"mingo99/autoverilog.nvim",
+		cmd = "AutoInst",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		keys = {
+			{ "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" },
+		},
+	},
 	-- hdl
 	{
 		"nvim-treesitter/nvim-treesitter",
