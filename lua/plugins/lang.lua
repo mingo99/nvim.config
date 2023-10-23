@@ -68,14 +68,7 @@ return {
 			},
 		},
 	},
-	{
-		"mingo99/autoverilog.nvim",
-		cmd = "AutoInst",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		keys = {
-			{ "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" },
-		},
-	},
+
 	-- hdl
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -111,6 +104,18 @@ return {
 					},
 				},
 			},
+		},
+	},
+	{
+		-- auto instantiation for verilog
+		-- enabled = false,
+		"mingo99/autoverilog.nvim",
+		-- dev = true,
+		-- dir = "/home/mingo/autoverilog.nvim",
+		cmd = "AutoInst",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		keys = {
+			{ "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" },
 		},
 	},
 
