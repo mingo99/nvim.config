@@ -521,7 +521,10 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
-		build = "cd app && npm install",
+		-- build = "cd app ; yarn install",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 		lazy = true,
 		keys = {
 			{ "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = " Markdown preview" },
