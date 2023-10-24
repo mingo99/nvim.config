@@ -327,10 +327,23 @@ return {
 	},
 
 	-- create and manage predefined window layout_strats
-	-- url: https://github.com/folke/edgy.nvimdev
+	-- url: https://github.com/folke/edgy.nvim
 	{
 		"folke/edgy.nvim",
 		event = "VeryLazy",
+		dependencies = {
+			-- A tree like view for symbols in Neovim using the Language Server Protocol
+			-- url: https://github.com/simrat39/symbols-outline.nvim
+			{
+				"simrat39/symbols-outline.nvim",
+				config = function()
+					require("symbols-outline").setup()
+				end,
+				keys = {
+					{ "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Toggle symbols outline" },
+				},
+			},
+		},
 		keys = {
 			{
 				"<leader>ue",
@@ -340,7 +353,7 @@ return {
 				desc = "edgy toggle",
 			},
             -- stylua: ignore
-            { "<leader>uE", function() require("edgy").select() end, desc = "Edgy Select Window" },
+            { "<leader>uE", function() require("edgy").select() end, desc = "edgy Select Window" },
 		},
 		opts = function()
 			local opts = {
@@ -414,6 +427,15 @@ return {
 					},
 					"neo-tree",
 				},
+				right = {
+					{
+						title = "Outline",
+						ft = "Outline",
+						size = { width = 0.2 },
+						pinned = true,
+						open = "SymbolsOutlineOpen",
+					},
+				},
 				keys = {
 					-- increase width
 					["<c-Right>"] = function(win)
@@ -433,15 +455,6 @@ return {
 					end,
 				},
 			}
-			local Util = require("util")
-			if Util.has("symbols-outline.nvim") then
-				table.insert(opts.left, {
-					title = "Outline",
-					ft = "Outline",
-					pinned = true,
-					open = "SymbolsOutline",
-				})
-			end
 			return opts
 		end,
 	},
@@ -505,7 +518,7 @@ return {
 			local animate = require("mini.animate")
 			return {
 				cursor = {
-					enable = true,
+					-- enable = true,
 					-- path = animate.gen_path.line({
 					-- predicate = function()
 					-- return true
