@@ -218,8 +218,8 @@ return {
 		},
 		opts = {
 			defaults = {
-				-- prompt_prefix = " ",
-				prompt_prefix = "🔍 ",
+				prompt_prefix = " ",
+				-- prompt_prefix = "🔍 ",
 				selection_caret = " ",
 				mappings = {
 					i = {
