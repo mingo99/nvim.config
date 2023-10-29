@@ -6,7 +6,15 @@ return {
 	cmd = "Lspsaga",
 	ft = { "c", "cpp", "json", "lua", "verilog", "python" },
 	config = function()
-		require("lspsaga").setup({})
+		require("lspsaga").setup({
+			lightbulb = {
+				enable = true,
+				sign = false,
+				virtual_text = true,
+				debounce = 10,
+				sign_priority = 40,
+			},
+		})
 	end,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter", -- optional
