@@ -5,9 +5,9 @@ M._keys = nil
 
 ---@return (LazyKeys|{has?:string})[]
 function M.get()
-	local format = function()
-		require("plugins.lsp.format").format({ force = true })
-	end
+	-- local format = function()
+	-- require("mingo.plugins.lsp.format").format({ force = true })
+	-- end
 	if not M._keys then
   ---@class PluginLspKeys
     -- stylua: ignore
@@ -22,14 +22,14 @@ function M.get()
       { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
-      { "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
-      { "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
-      { "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
-      { "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
-      { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
-      { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
-      { "<leader>cf", format, desc = "Format Document", has = "formatting" },
-      { "<leader>cf", format, desc = "Format Range", mode = "v", has = "rangeFormatting" },
+      -- { "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
+      -- { "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
+      -- { "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
+      -- { "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
+      -- { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
+      -- { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
+      -- { "<leader>cf", format, desc = "Format Document", has = "formatting" },
+      -- { "<leader>cf", format, desc = "Format Range", mode = "v", has = "rangeFormatting" },
       { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
       {
         "<leader>cA",
@@ -47,7 +47,7 @@ function M.get()
         has = "codeAction",
       }
     }
-		if require("util").has("inc-rename.nvim") then
+		if require("mingo.util").has("inc-rename.nvim") then
 			M._keys[#M._keys + 1] = {
 				"<leader>cr",
 				function()
@@ -93,7 +93,7 @@ function M.resolve(buffer)
 		add(keymap)
 	end
 
-	local opts = require("util").opts("nvim-lspconfig")
+	local opts = require("mingo.util").opts("nvim-lspconfig")
 	local clients = vim.lsp.get_active_clients({ bufnr = buffer })
 	for _, client in ipairs(clients) do
 		local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}
@@ -110,6 +110,7 @@ function M.on_attach(_, buffer)
 
 	for _, keys in pairs(keymaps) do
 		if not keys.has or M.has(buffer, keys.has) then
+			---@class LazyKeysBase
 			local opts = Keys.opts(keys)
 			---@diagnostic disable-next-line: no-unknown
 			opts.has = nil

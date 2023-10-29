@@ -12,7 +12,7 @@ return {
 			{
 				"hrsh7th/cmp-nvim-lsp",
 				cond = function()
-					return require("util").has("nvim-cmp")
+					return require("mingo.util").has("nvim-cmp")
 				end,
 			},
 			{ "b0o/SchemaStore.nvim", version = false }, -- last release is way too old
@@ -45,17 +45,17 @@ return {
 		},
 		---@param opts PluginLspOpts
 		config = function(_, opts)
-			local Util = require("util")
+			local Util = require("mingo.util")
 
 			if Util.has("neoconf.nvim") then
 				local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
 				require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
 			end
 			-- setup autoformat
-			require("plugins.lsp.format").setup(opts)
+			require("mingo.plugins.lsp.format").setup(opts)
 			-- setup formatting and keymaps
 			Util.on_attach(function(client, buffer)
-				require("plugins.lsp.keymaps").on_attach(client, buffer)
+				require("mingo.plugins.lsp.keymaps").on_attach(client, buffer)
 			end)
 
 			local register_capability = vim.lsp.handlers["client/registerCapability"]
@@ -66,12 +66,12 @@ return {
 				---@type lsp.Client
 				local client = vim.lsp.get_client_by_id(client_id)
 				local buffer = vim.api.nvim_get_current_buf()
-				require("plugins.lsp.keymaps").on_attach(client, buffer)
+				require("mingo.plugins.lsp.keymaps").on_attach(client, buffer)
 				return ret
 			end
 
 			-- diagnostics
-			for name, icon in pairs(require("util").icons.diagnostics) do
+			for name, icon in pairs(require("mingo.util").icons.diagnostics) do
 				name = "DiagnosticSign" .. name
 				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 			end
@@ -89,7 +89,7 @@ return {
 			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
 				opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
 					or function(diagnostic)
-						local icons = require("util").icons.diagnostics
+						local icons = require("mingo.util").icons.diagnostics
 						for d, icon in pairs(icons) do
 							if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
 								return icon
@@ -161,26 +161,6 @@ return {
 		end,
 	},
 
-	-- formatters
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "mason.nvim" },
-		opts = function()
-			local nls = require("null-ls")
-			return {
-				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-				sources = {
-					nls.builtins.formatting.fish_indent,
-					nls.builtins.diagnostics.fish,
-					nls.builtins.formatting.stylua,
-					nls.builtins.formatting.shfmt,
-					-- nls.builtins.diagnostics.flake8,
-				},
-			}
-		end,
-	},
-
 	-- cmdline tools and lsp servers
 	{
 
@@ -215,57 +195,80 @@ return {
 		end,
 	},
 
-	-- lsp symbol navigation for lualine
-	-- url: https://github.com/SmiteshP/nvim-navic
+	-- formatters
+	-- url: https://github.com/nvimtools/none-ls.nvim
 	{
-		"SmiteshP/nvim-navic",
+		"nvimtools/none-ls.nvim", -- configure formatters & linters
 		lazy = true,
-		init = function()
-			vim.g.navic_silence = true
-			require("util").on_attach(function(client, buffer)
-				if client.server_capabilities.documentSymbolProvider then
-					require("nvim-navic").attach(client, buffer)
-				end
-			end)
-		end,
-		opts = function()
-			return {
-				separator = " ",
-				highlight = true,
-				depth_limit = 5,
-				icons = require("util").icons.kinds,
-			}
-		end,
-	},
-
-	-- snippets for lua
-	-- url: https://github.com/L3MON4D3/LuaSnip
-	{
-		"L3MON4D3/LuaSnip",
-		build = (not jit.os:find("Windows"))
-				and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-			or nil,
+		event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 		dependencies = {
-			"rafamadriz/friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
+			"jay-babu/mason-null-ls.nvim",
 		},
-		opts = {
-			history = true,
-			delete_check_events = "TextChanged",
-		},
-        -- stylua: ignore
-        keys = {
-            {
-                "<tab>",
-                function()
-                    return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-                end,
-                expr = true, silent = true, mode = "i",
-            },
-            { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-            { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-        },
+		config = function()
+			local mason_null_ls = require("mason-null-ls")
+
+			local null_ls = require("null-ls")
+
+			local null_ls_utils = require("null-ls.utils")
+
+			mason_null_ls.setup({
+				ensure_installed = {
+					"prettier", -- prettier formatter
+					"stylua", -- lua formatter
+					"black", -- python formatter
+					"pylint", -- python linter
+					"eslint_d", -- js linter
+				},
+			})
+
+			-- for conciseness
+			local formatting = null_ls.builtins.formatting -- to setup formatters
+			local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+
+			-- to setup format on save
+			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+			-- configure null_ls
+			null_ls.setup({
+				-- add package.json as identifier for root (for typescript monorepos)
+				root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+				-- setup formatters & linters
+				sources = {
+					--  to disable file types use
+					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+					formatting.prettier.with({
+						extra_filetypes = { "svelte" },
+					}), -- js/ts formatter
+					formatting.stylua, -- lua formatter
+					formatting.isort,
+					formatting.black,
+					diagnostics.pylint,
+					diagnostics.eslint_d.with({ -- js/ts linter
+						condition = function(utils)
+							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+						end,
+					}),
+				},
+				-- configure format on save
+				on_attach = function(current_client, bufnr)
+					if current_client.supports_method("textDocument/formatting") then
+						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+								vim.lsp.buf.format({
+									filter = function(client)
+										--  only use null-ls for formatting instead of lsp server
+										return client.name == "null-ls"
+									end,
+									bufnr = bufnr,
+								})
+							end,
+						})
+					end
+				end,
+			})
+		end,
 	},
 }

@@ -17,7 +17,7 @@ end
 -- load plugins
 -- path: ~/.config/nvim/lua/plugins
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins")
+require("lazy").setup("mingo.plugins")
 
 -- Colorscheme
 vim.cmd([[colorscheme tokyonight]])
@@ -25,7 +25,7 @@ vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme darkplus]])
 -- vim.cmd([[colorscheme onedark]])
 
-require("config.usercmds")
-require("config.autocmds")
-require("config.options")
-require("config.keymaps")
+require("mingo.config.usercmds")
+require("mingo.config.autocmds")
+require("mingo.config.options")
+require("mingo.config.keymaps")
