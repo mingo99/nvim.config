@@ -20,13 +20,36 @@ return {
 
 	-- comment functions so powerful—no comment necessary
 	-- url: https://github.com/preservim/nerdcommenter
+	-- {
+	-- "preservim/nerdcommenter",
+	-- event = "VeryLazy",
+	-- config = function()
+	-- vim.g.NERDCreateDefaultMappings = 1
+	-- vim.g.NERDSpaceDelims = 1
+	-- vim.g.NERDCommentEmptyLines = 1
+	-- end,
+	-- keys = {},
+	-- },
+
+	-- Smart and Powerful commenting plugin for neovim
+	-- url: https://github.com/numToStr/Comment.nvim
 	{
-		"preservim/nerdcommenter",
-		event = "VeryLazy",
+		"numToStr/Comment.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
 		config = function()
-			vim.g.NERDCreateDefaultMappings = 1
-			vim.g.NERDSpaceDelims = 1
-			vim.g.NERDCommentEmptyLines = 1
+			-- import comment plugin safely
+			local comment = require("Comment")
+
+			local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
+
+			-- enable comment
+			comment.setup({
+				-- for commenting tsx and jsx files
+				pre_hook = ts_context_commentstring.create_pre_hook(),
+			})
 		end,
 	},
 

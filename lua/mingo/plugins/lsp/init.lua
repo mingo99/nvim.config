@@ -51,8 +51,6 @@ return {
 				local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
 				require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
 			end
-			-- setup autoformat
-			require("mingo.plugins.lsp.format").setup(opts)
 			-- setup formatting and keymaps
 			Util.on_attach(function(client, buffer)
 				require("mingo.plugins.lsp.keymaps").on_attach(client, buffer)
@@ -199,6 +197,7 @@ return {
 	-- url: https://github.com/nvimtools/none-ls.nvim
 	{
 		"nvimtools/none-ls.nvim", -- configure formatters & linters
+		enabled = false,
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 		dependencies = {
@@ -218,6 +217,7 @@ return {
 					"black", -- python formatter
 					"pylint", -- python linter
 					"eslint_d", -- js linter
+					"verible", -- verilog linter
 				},
 			})
 

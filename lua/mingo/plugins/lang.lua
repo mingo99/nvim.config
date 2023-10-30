@@ -121,16 +121,7 @@ return {
 						"verible-verilog-ls",
 						-- "--wrap_end_else_clauses",
 						"--indentation_spaces=4",
-					},
-					settings = {
-						verilog = {
-							format = {
-								-- indentation_spaces = vim.o.shiftwidth,
-								indentation_spaces = 4,
-								convertTabsToSpaces = vim.o.expandtab,
-								tabSize = vim.o.tabstop,
-							},
-						},
+						"--rules_config_search",
 					},
 				},
 			},
@@ -138,10 +129,8 @@ return {
 	},
 	{
 		-- auto instantiation for verilog
-		-- enabled = false,
+		-- url: https://github.com/mingo99/autoverilog.nvim
 		"mingo99/autoverilog.nvim",
-		-- dev = true,
-		-- dir = "/home/mingo/autoverilog.nvim",
 		cmd = "AutoInst",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		keys = {
