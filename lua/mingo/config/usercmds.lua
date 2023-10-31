@@ -7,6 +7,7 @@ local function set_esc_ctrl_hjkl_false()
 	vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = 0, nowait = true })
 	vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = 0, nowait = true })
 end
+
 -- Open joshuto with floaterm
 vim.api.nvim_create_user_command("Joshuto", function(opts)
 	local jso = string.format(
