@@ -13,7 +13,7 @@ return {
             { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
             { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
             { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "<c-x>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
 	},
 	-- Flash Telescope config
@@ -43,7 +43,7 @@ return {
 				})
 			end
 			opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
-				mappings = { n = { s = flash }, i = { ["<c-s>"] = flash } },
+				mappings = { n = { s = flash }, i = { ["<c-x>"] = flash } },
 			})
 		end,
 	},

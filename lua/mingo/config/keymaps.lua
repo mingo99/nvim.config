@@ -109,16 +109,12 @@ if vim.lsp.inlay_hint then
     map("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
 end
 
--- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
-
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- highlights under cursor
 if vim.fn.has("nvim-0.9.0") == 1 then
-  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+    map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
 -- floating terminal
@@ -127,9 +123,6 @@ map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
 map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
--- map("n", "<leader>ft", "<cmd>FloatermNew<cr>", { desc = "New terminal" })
--- map("n", "<C-/>", "<cmd>FloatermToggle<cr>", { desc = "Toggle terminal" })
--- map("n", "<c-_>", "<cmd>FloatermToggle<cr>", { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
@@ -139,16 +132,12 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
--- map("t", "<C-h>", "<cmd>FloatermPrev<cr>", { desc = "Go to previous terminal" })
--- map("t", "<C-l>", "<cmd>FloatermNext<cr>", { desc = "Go to next terminal" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
--- map("n", "<leader>s", "<C-W>s", { desc = "Split window below", remap = true })
--- map("n", "<leader>v", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -158,6 +147,12 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- lazygit
+-- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
+-- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", "<cmd>Lazygit <root><cr>", { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", "<cmd>Lazygit <buffer><cr>", { desc = "Lazygit (cwd)" })
+
 -- file explorer: joshuto
--- map("n", "<leader>jso", "<cmd>FloatermNew --title=Joshuto --height=0.9 --width=0.9 joshuto <cr>", { desc = "Open Joshuto" })
-map("n", "<leader>jso", "<cmd>Joshuto<cr>", { desc = "Open Joshuto" })
+map("n", "<leader>jj", "<cmd>Joshuto <root><cr>", { desc = "Joshuto (root dir)" })
+map("n", "<leader>jJ", "<cmd>Joshuto <buffer><cr>", { desc = "Joshuto (cwd)" })

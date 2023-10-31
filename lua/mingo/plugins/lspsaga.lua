@@ -4,7 +4,7 @@ return {
 	"nvimdev/lspsaga.nvim",
 	event = "LspAttach",
 	cmd = "Lspsaga",
-	ft = { "c", "cpp", "json", "lua", "verilog", "python" },
+	ft = { "c", "cpp", "json", "lua", "verilog", "python", "markdown", "make" },
 	config = function()
 		require("lspsaga").setup({
 			lightbulb = {
@@ -21,6 +21,7 @@ return {
 		"nvim-tree/nvim-web-devicons", -- optional
 	},
 	keys = {
-		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Symbols outline" },
+		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga outline" },
+		{ "<leader>cr", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga rename" },
 	},
 }
