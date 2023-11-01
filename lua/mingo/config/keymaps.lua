@@ -154,5 +154,5 @@ map("n", "<leader>gg", "<cmd>Lazygit <root><cr>", { desc = "Lazygit (root dir)" 
 map("n", "<leader>gG", "<cmd>Lazygit <buffer><cr>", { desc = "Lazygit (cwd)" })
 
 -- file explorer: joshuto
-map("n", "<leader>jj", "<cmd>Joshuto <root><cr>", { desc = "Joshuto (root dir)" })
-map("n", "<leader>jJ", "<cmd>Joshuto <buffer><cr>", { desc = "Joshuto (cwd)" })
+map("n", "<leader>jj", "<cmd>Joshuto <buffer><cr>", { desc = "Joshuto (cwd)" })
+map("n", "<leader>jJ", "<cmd>Joshuto <root><cr>", { desc = "Joshuto (root dir)" })
