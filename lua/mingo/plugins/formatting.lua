@@ -1,3 +1,5 @@
+-- Lightweight yet powerful formatter plugin for Neovim
+-- url: https://github.com/stevearc/conform.nvim
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
@@ -6,11 +8,13 @@ return {
 		local conform = require("conform")
 
 		conform.setup({
+			formatters = {
+				verible = {
+					command = "verible-verilog-format",
+				},
+			},
 			formatters_by_ft = {
-				css = { "prettier" },
-				html = { "prettier" },
 				json = { "prettier" },
-				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },

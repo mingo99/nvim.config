@@ -1,3 +1,5 @@
+-- An asynchronous linter plugin for Neovim (>= 0.6.0) complementary to the built-in Language Server Protocol support.
+-- url: https://github.com/mfussenegger/nvim-lint
 return {
 	"mfussenegger/nvim-lint",
 	lazy = true,
@@ -5,8 +7,11 @@ return {
 	config = function()
 		local lint = require("lint")
 
+		lint.linters.verible = {
+			cmd = "verible-verilog-lint",
+		}
 		lint.linters_by_ft = {
-			python = { "pylint" },
+			python = { "flake8", "pylint" },
 			verilog = { "verible" },
 		}
 
