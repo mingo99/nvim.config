@@ -161,18 +161,18 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				pyright = {
-					single_file_support = true,
-					settings = {
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "workspace",
-								useLibraryCodeForTypes = true,
-							},
-						},
-					},
-				},
+				-- pyright = {
+				-- 	single_file_support = true,
+				-- 	settings = {
+				-- 		python = {
+				-- 			analysis = {
+				-- 				autoSearchPaths = true,
+				-- 				diagnosticMode = "workspace",
+				-- 				useLibraryCodeForTypes = true,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 				ruff_lsp = {},
 			},
 		},

@@ -11,7 +11,7 @@ return {
 			cmd = "verible-verilog-lint",
 		}
 		lint.linters_by_ft = {
-			python = { "flake8", "pylint" },
+			python = { "pylint" },
 			verilog = { "verible" },
 		}
 
