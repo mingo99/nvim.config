@@ -54,5 +54,12 @@
         "/home/mingo/.config/nvim/lua",
         "${3rd}/luv/library"
     ],
-    "completion.autoRequire": false
+    "completion.autoRequire": false,
+    "diagnostics.disable": [
+        "param-type-mismatch",
+        "undefined-field"
+    ],
+    "diagnostics.globals": [
+        "load_textobjects"
+    ]
 }

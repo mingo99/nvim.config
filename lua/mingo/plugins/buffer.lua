@@ -23,6 +23,7 @@ return {
 						.. (diag.warning and icons.Warn .. diag.warning or "")
 					return vim.trim(ret)
 				end,
+				separator_style = { "", "" },
 				offsets = {
 					{
 						filetype = "neo-tree",

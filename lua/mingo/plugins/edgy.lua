@@ -55,7 +55,7 @@ return {
 				},
 				left = {
 					{
-						title = "Neo-Tree",
+						title = "Explorer",
 						ft = "neo-tree",
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "filesystem"
@@ -68,7 +68,7 @@ return {
 					},
 					{ title = "Neotest Summary", ft = "neotest-summary" },
 					{
-						title = "Neo-Tree Git",
+						title = "Git",
 						ft = "neo-tree",
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "git_status"
@@ -77,7 +77,7 @@ return {
 						open = "Neotree position=right git_status",
 					},
 					{
-						title = "Neo-Tree Buffers",
+						title = "Buffers",
 						ft = "neo-tree",
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "buffers"
@@ -130,32 +130,32 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		optional = true,
-		opts = function()
-			local Offset = require("bufferline.offset")
-			if not Offset.edgy then
-				local get = Offset.get
-				---@diagnostic disable-next-line
-				Offset.get = function()
-					if package.loaded.edgy then
-						local layout = require("edgy.config").layout
-						local ret = { left = "", left_size = 0, right = "", right_size = 0 }
-						for _, pos in ipairs({ "left", "right" }) do
-							local sb = layout[pos]
-							if sb and #sb.wins > 0 then
-								local title = " Sidebar" .. string.rep(" ", sb.bounds.width - 8)
-								ret[pos] = "%#EdgyTitle#" .. title .. "%*" .. "%#WinSeparator#│%*"
-								ret[pos .. "_size"] = sb.bounds.width
-							end
-						end
-						ret.total_size = ret.left_size + ret.right_size
-						if ret.total_size > 0 then
-							return ret
-						end
-					end
-					return get()
-				end
-				Offset.edgy = true
-			end
-		end,
+		-- opts = function()
+		-- 	local Offset = require("bufferline.offset")
+		-- 	if not Offset.edgy then
+		-- 		local get = Offset.get
+		-- 		---@diagnostic disable-next-line
+		-- 		Offset.get = function()
+		-- 			if package.loaded.edgy then
+		-- 				local layout = require("edgy.config").layout
+		-- 				local ret = { left = "", left_size = 0, right = "", right_size = 0 }
+		-- 				for _, pos in ipairs({ "left", "right" }) do
+		-- 					local sb = layout[pos]
+		-- 					if sb and #sb.wins > 0 then
+		-- 						local title = " Sidebar" .. string.rep(" ", sb.bounds.width - 8)
+		-- 						ret[pos] = "%#EdgyTitle#" .. title .. "%*" .. "%#WinSeparator#│%*"
+		-- 						ret[pos .. "_size"] = sb.bounds.width
+		-- 					end
+		-- 				end
+		-- 				ret.total_size = ret.left_size + ret.right_size
+		-- 				if ret.total_size > 0 then
+		-- 					return ret
+		-- 				end
+		-- 			end
+		-- 			return get()
+		-- 		end
+		-- 		Offset.edgy = true
+		-- 	end
+		-- end,
 	},
 }

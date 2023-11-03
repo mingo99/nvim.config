@@ -14,6 +14,16 @@ return {
 				debounce = 10,
 				sign_priority = 40,
 			},
+			hover = {
+				open_link = "gx",
+				open_cmd = "!wslview",
+			},
+			diagnostic = {
+				max_height = 0.8,
+				keys = {
+					quit = { "q", "<ESC>" },
+				},
+			},
 		})
 	end,
 	dependencies = {
@@ -21,7 +31,40 @@ return {
 		"nvim-tree/nvim-web-devicons", -- optional
 	},
 	keys = {
-		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga outline" },
-		{ "<leader>cr", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga rename" },
+		{ "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next Diagnostic" },
+		{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Prev Diagnostic" },
+		{
+			"]e",
+			function()
+				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+			end,
+			desc = "Next Error",
+		},
+		{
+			"[e",
+			function()
+				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+			end,
+			desc = "Prev Error",
+		},
+		{
+			"]w",
+			function()
+				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+			end,
+			desc = "Next Warning",
+		},
+		{
+			"[w",
+			function()
+				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+			end,
+			desc = "Prev Warning",
+		},
+		{ "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover" },
+		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Symbols outline" },
+		{ "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "Code action", mode = { "n", "v" } },
+		{ "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show line diagnostics" },
+		{ "<leader>rn", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
 	},
 }

@@ -8,7 +8,7 @@ function M.get()
 	if not M._keys then
 		---@class PluginLspKeys
 		M._keys = {
-			{ "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+			-- { "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
 			{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
 			{
 				"gd",
@@ -34,15 +34,15 @@ function M.get()
 				end,
 				desc = "Goto T[y]pe Definition",
 			},
-			{ "gh", vim.lsp.buf.hover, desc = "Hover" },
+			-- { "gh", vim.lsp.buf.hover, desc = "Hover" },
 			{ "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-			{ "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
-			{ "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
-			{ "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
-			{ "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
-			{ "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
-			{ "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
-			{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+			-- { "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
+			-- { "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
+			-- { "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
+			-- { "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
+			-- { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
+			-- { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
+			-- { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
 			{
 				"<leader>cA",
 				function()
