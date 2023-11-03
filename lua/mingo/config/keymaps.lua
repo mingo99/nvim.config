@@ -148,11 +148,9 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- lazygit
--- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
--- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
 map("n", "<leader>gg", "<cmd>Lazygit <root><cr>", { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", "<cmd>Lazygit <buffer><cr>", { desc = "Lazygit (cwd)" })
+map("n", "<leader>gG", "<cmd>Lazygit<cr>", { desc = "Lazygit (cwd)" })
 
 -- file explorer: joshuto
-map("n", "<leader>jj", "<cmd>Joshuto <buffer><cr>", { desc = "Joshuto (cwd)" })
+map("n", "<leader>jj", "<cmd>Joshuto<cr>", { desc = "Joshuto (cwd)" })
 map("n", "<leader>jJ", "<cmd>Joshuto <root><cr>", { desc = "Joshuto (root dir)" })

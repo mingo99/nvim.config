@@ -8,22 +8,47 @@ local function set_esc_ctrl_hjkl_false()
 	vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = 0, nowait = true })
 end
 
--- Open joshuto with floaterm
-vim.api.nvim_create_user_command("Joshuto", function(opts)
-	local jso = string.format(
-		"FloatermNew --cwd=%s --title=Joshuto --titleposition=center --height=0.9 --width=0.9 joshuto",
-		opts.args
-	)
-	vim.cmd(jso)
-	set_esc_ctrl_hjkl_false()
-end, { nargs = 1 })
+-- Run command with Floaterm
+vim.api.nvim_create_user_command("FloatermCmd", function(opts)
+	local args_str = opts.args
+	local args = {}
 
--- Open lazygit with floaterm
-vim.api.nvim_create_user_command("Lazygit", function(opts)
-	local lg = string.format(
-		"FloatermNew --cwd=%s --title=Lazygit --titleposition=center --height=0.9 --width=0.9 lazygit",
-		opts.args
+	for arg in args_str:gmatch("%S+") do
+		table.insert(args, arg)
+	end
+
+	assert((#args == 2), "Two arguments required")
+	local cmd = string.format(
+		"FloatermNew --cwd=%s --disposable --title=Joshuto --titleposition=center --height=0.9 --width=0.9 %s",
+		args[2],
+		args[1]
 	)
-	vim.cmd(lg)
+	vim.cmd(cmd)
 	set_esc_ctrl_hjkl_false()
-end, { nargs = 1 })
+end, { nargs = "+" })
+
+-- Joshuto
+vim.api.nvim_create_user_command("Joshuto", function(opts)
+	local args = opts.args:match("%S+")
+	local cmd = nil
+	if args then
+		cmd = "FloatermCmd joshuto " .. opts.args
+	else
+		cmd = "FloatermCmd joshuto <buffer>"
+	end
+	vim.cmd(cmd)
+	set_esc_ctrl_hjkl_false()
+end, { nargs = "?" })
+
+-- Lazygit
+vim.api.nvim_create_user_command("Lazygit", function(opts)
+	local args = opts.args:match("%S+")
+	local cmd = nil
+	if args then
+		cmd = "FloatermCmd lazygit " .. opts.args
+	else
+		cmd = "FloatermCmd lazygit <buffer>"
+	end
+	vim.cmd(cmd)
+	set_esc_ctrl_hjkl_false()
+end, { nargs = "?" })
