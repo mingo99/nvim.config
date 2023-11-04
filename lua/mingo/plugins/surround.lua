@@ -5,10 +5,12 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
-		config = function()
+		config = function(opts)
+			local ft = vim.bo.filetype
 			local npairs = require("nvim-autopairs")
-			if vim.bo.filetype == "verilog" then
-				npairs.remove_rules("`")
+			npairs.setup(opts)
+			if ft == "verilog" or ft == "systemverilog" then
+				npairs.remove_rule("`")
 			end
 		end,
 	},

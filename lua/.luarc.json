@@ -53,17 +53,5 @@
     "/home/mingo/.local/share/nvim/lazy/mini.ai/lua",
     "/home/mingo/.config/nvim/lua",
     "${3rd}/luv/library"
-  ],
-<<<<<<< Updated upstream
-  "diagnostics.globals": ["load_textobjects"],
-  "completion.autoRequire": false,
-  "diagnostics.disable": [
-    "param-type-mismatch",
-    "undefined-field",
-    "unused-local"
   ]
-=======
-  "diagnostics.disable": ["param-type-mismatch", "undefined-field"],
-  "diagnostics.globals": ["load_textobjects"]
->>>>>>> Stashed changes
 }

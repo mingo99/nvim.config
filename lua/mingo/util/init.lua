@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 local Util = require("lazy.core.util")
 
 local M = {}
@@ -82,7 +83,7 @@ end
 function M.fg(name)
 	---@type {foreground?:number}?
 	local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name })
-		or vim.api.nvim_get_hl_by_name(name, true)
+	---@diagnostic disable-next-line: undefined-field
 	local fg = hl and hl.fg or hl.foreground
 	return fg and { fg = string.format("#%06x", fg) }
 end
@@ -130,6 +131,7 @@ function M.get_root()
 				or {}
 			for _, p in ipairs(paths) do
 				local r = vim.loop.fs_realpath(p)
+				---@diagnostic disable-next-line: param-type-mismatch
 				if path:find(r, 1, true) then
 					roots[#roots + 1] = r
 				end
@@ -364,6 +366,20 @@ function M.changelog()
 	vim.wo[float.win].spell = false
 	vim.wo[float.win].wrap = false
 	vim.diagnostic.disable(float.buf)
+end
+
+function M.get_upvalue(func, name)
+	local i = 1
+	while true do
+		local n, v = debug.getupvalue(func, i)
+		if not n then
+			break
+		end
+		if n == name then
+			return v
+		end
+		i = i + 1
+	end
 end
 
 return M

@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
 	-- a blazing fast and easy to configure Neovim statusline written in Lua
 	-- url: https://github.com/nvim-lualine/lualine.nvim
@@ -19,16 +20,16 @@ return {
 					lualine_b = { "branch" },
 					lualine_c = {
 						{
-							"diagnostics",
+							"diff",
 							symbols = {
-								error = icons.diagnostics.Error,
-								warn = icons.diagnostics.Warn,
-								info = icons.diagnostics.Info,
-								hint = icons.diagnostics.Hint,
+								added = icons.git.added,
+								modified = icons.git.modified,
+								removed = icons.git.removed,
 							},
 						},
 						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 						{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+						{ "selectioncount" },
      	 	 	 	 	-- stylua: ignore
      	 	 	 	 	{
      	 	 	 	 	 	function() return require("nvim-navic").get_location() end,
@@ -60,34 +61,40 @@ return {
 							color = Util.fg("Special"),
 						},
 						{
-							"diff",
+							"diagnostics",
 							symbols = {
-								added = icons.git.added,
-								modified = icons.git.modified,
-								removed = icons.git.removed,
+								error = icons.diagnostics.Error,
+								warn = icons.diagnostics.Warn,
+								info = icons.diagnostics.Info,
+								hint = icons.diagnostics.Hint,
 							},
 						},
-                        -- stylua: ignore
-                        {
-                            -- Lsp server name
-                            function()
-                                local msg = "no client"
-                                local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-                                local clients = vim.lsp.get_active_clients()
-                                if next(clients) == nil then
-                                    return msg
-                                end
-                                for _, client in ipairs(clients) do
-                                    local filetypes = client.config.filetypes
-                                    if client.name ~= "null-ls" and filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                                        return client.name
-                                    end
-                                end
-                                return msg
-                            end,
-                            icon = "",
-                            color = {fg = "#87ceeb"},
-                        },
+						{
+							-- Lsp server name
+							function()
+								local msg = "no client"
+								local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+								local clients = vim.lsp.get_active_clients()
+								if next(clients) == nil then
+									return msg
+								end
+								for _, client in ipairs(clients) do
+									local filetypes = client.config.filetypes
+									if
+										client.name ~= "null-ls"
+										and filetypes
+										and vim.fn.index(filetypes, buf_ft) ~= -1
+									then
+										return client.name
+									end
+								end
+								return msg
+							end,
+							icon = "",
+							color = { fg = "#87ceeb" },
+						},
+						{ "fileformat", separator = "", padding = { left = 1, right = 0 }, color = { fg = "#94b963" } },
+						{ "encoding", color = { fg = "#94b963" } },
 					},
 					lualine_y = {
 						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
@@ -111,23 +118,23 @@ return {
 	-- lsp symbol navigation for lualine
 	-- url: https://github.com/SmiteshP/nvim-navic
 	-- {
-	-- "SmiteshP/nvim-navic",
-	-- lazy = true,
-	-- init = function()
-	-- vim.g.navic_silence = true
-	-- require("mingo.util").on_attach(function(client, buffer)
-	-- if client.server_capabilities.documentSymbolProvider then
-	-- require("nvim-navic").attach(client, buffer)
-	-- end
-	-- end)
-	-- end,
-	-- opts = function()
-	-- return {
-	-- separator = " ",
-	-- highlight = true,
-	-- depth_limit = 5,
-	-- icons = require("mingo.util").icons.kinds,
-	-- }
-	-- end,
+	-- 	"SmiteshP/nvim-navic",
+	-- 	lazy = true,
+	-- 	init = function()
+	-- 		vim.g.navic_silence = true
+	-- 		require("mingo.util").on_attach(function(client, buffer)
+	-- 			if client.server_capabilities.documentSymbolProvider then
+	-- 				require("nvim-navic").attach(client, buffer)
+	-- 			end
+	-- 		end)
+	-- 	end,
+	-- 	opts = function()
+	-- 		return {
+	-- 			separator = " ",
+	-- 			highlight = true,
+	-- 			depth_limit = 5,
+	-- 			icons = require("mingo.util").icons.kinds,
+	-- 		}
+	-- 	end,
 	-- },
 }

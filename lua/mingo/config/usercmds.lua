@@ -10,9 +10,7 @@ end
 
 -- Create Lazugit,Joshuto with custom toggleterm
 local Terminal = require("toggleterm.terminal").Terminal
-local float_border_hl = vim.api.nvim_get_hl_by_name("FloatBorder", true)
-local fg_color = float_border_hl.foreground
-local bg_color = float_border_hl.background
+local float_border_hl = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
 
 local function lazygit_toggle()
 	local lazygit = Terminal:new({
@@ -22,15 +20,13 @@ local function lazygit_toggle()
 		hidden = true,
 		highlights = {
 			FloatBorder = {
-				guifg = fg_color,
-				guibg = bg_color,
+				guifg = float_border_hl.fg,
 			},
 		},
 		float_opts = {
 			border = "rounded",
 		},
 	})
-	---@diagnostic disable-next-line: lowercase-global
 	lazygit:toggle()
 	set_esc_ctrl_hjkl_false()
 end
@@ -41,21 +37,20 @@ end, { nargs = 0 })
 
 local function joshuto_toggle()
 	local joshuto = Terminal:new({
+		title = "Joshuto",
 		cmd = "joshuto",
 		dir = vim.loop.cwd(),
 		direction = "float",
 		hidden = true,
 		highlights = {
 			FloatBorder = {
-				guifg = fg_color,
-				guibg = bg_color,
+				guifg = float_border_hl.fg,
 			},
 		},
 		float_opts = {
 			border = "rounded",
 		},
 	})
-	---@diagnostic disable-next-line: lowercase-global
 	joshuto:toggle()
 	set_esc_ctrl_hjkl_false()
 end
