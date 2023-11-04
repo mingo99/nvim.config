@@ -8,47 +8,58 @@ local function set_esc_ctrl_hjkl_false()
 	vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = 0, nowait = true })
 end
 
--- Run command with Floaterm
-vim.api.nvim_create_user_command("FloatermCmd", function(opts)
-	local args_str = opts.args
-	local args = {}
+-- Create Lazugit,Joshuto with custom toggleterm
+local Terminal = require("toggleterm.terminal").Terminal
+local float_border_hl = vim.api.nvim_get_hl_by_name("FloatBorder", true)
+local fg_color = float_border_hl.foreground
+local bg_color = float_border_hl.background
 
-	for arg in args_str:gmatch("%S+") do
-		table.insert(args, arg)
-	end
-
-	assert((#args == 2), "Two arguments required")
-	local cmd = string.format(
-		"FloatermNew --cwd=%s --disposable --title=Joshuto --titleposition=center --height=0.9 --width=0.9 %s",
-		args[2],
-		args[1]
-	)
-	vim.cmd(cmd)
+local function lazygit_toggle()
+	local lazygit = Terminal:new({
+		cmd = "lazygit",
+		dir = "git_dir",
+		direction = "float",
+		hidden = true,
+		highlights = {
+			FloatBorder = {
+				guifg = fg_color,
+				guibg = bg_color,
+			},
+		},
+		float_opts = {
+			border = "rounded",
+		},
+	})
+	---@diagnostic disable-next-line: lowercase-global
+	lazygit:toggle()
 	set_esc_ctrl_hjkl_false()
-end, { nargs = "+" })
+end
 
--- Joshuto
-vim.api.nvim_create_user_command("Joshuto", function(opts)
-	local args = opts.args:match("%S+")
-	local cmd = nil
-	if args then
-		cmd = "FloatermCmd joshuto " .. opts.args
-	else
-		cmd = "FloatermCmd joshuto <buffer>"
-	end
-	vim.cmd(cmd)
-	set_esc_ctrl_hjkl_false()
-end, { nargs = "?" })
+vim.api.nvim_create_user_command("Lazygit", function()
+	lazygit_toggle()
+end, { nargs = 0 })
 
--- Lazygit
-vim.api.nvim_create_user_command("Lazygit", function(opts)
-	local args = opts.args:match("%S+")
-	local cmd = nil
-	if args then
-		cmd = "FloatermCmd lazygit " .. opts.args
-	else
-		cmd = "FloatermCmd lazygit <buffer>"
-	end
-	vim.cmd(cmd)
+local function joshuto_toggle()
+	local joshuto = Terminal:new({
+		cmd = "joshuto",
+		dir = vim.loop.cwd(),
+		direction = "float",
+		hidden = true,
+		highlights = {
+			FloatBorder = {
+				guifg = fg_color,
+				guibg = bg_color,
+			},
+		},
+		float_opts = {
+			border = "rounded",
+		},
+	})
+	---@diagnostic disable-next-line: lowercase-global
+	joshuto:toggle()
 	set_esc_ctrl_hjkl_false()
-end, { nargs = "?" })
+end
+
+vim.api.nvim_create_user_command("Joshuto", function()
+	joshuto_toggle()
+end, { nargs = 0 })

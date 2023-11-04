@@ -148,9 +148,7 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- lazygit
-map("n", "<leader>gg", "<cmd>Lazygit <root><cr>", { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", "<cmd>Lazygit<cr>", { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", "<cmd>Lazygit<cr>", { desc = "Lazygit (root dir)" })
 
 -- file explorer: joshuto
 map("n", "<leader>jj", "<cmd>Joshuto<cr>", { desc = "Joshuto (cwd)" })
-map("n", "<leader>jJ", "<cmd>Joshuto <root><cr>", { desc = "Joshuto (root dir)" })
