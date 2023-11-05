@@ -93,8 +93,8 @@ return {
 							icon = "",
 							color = { fg = "#87ceeb" },
 						},
-						{ "fileformat", separator = "", padding = { left = 1, right = 0 }, color = { fg = "#94b963" } },
-						{ "encoding", color = { fg = "#94b963" } },
+						{ "fileformat", separator = "", color = { fg = "#94b963" } },
+						{ "encoding", padding = { left = 0, right = 1 }, color = { fg = "#94b963" } },
 					},
 					lualine_y = {
 						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
