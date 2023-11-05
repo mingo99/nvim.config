@@ -118,11 +118,10 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 
 -- floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+map("n", "<leader>tt", "<cmd>Floaterm root<cr>", { desc = "Terminal (root dir)" })
+map("n", "<leader>tT", "<cmd>Floaterm cwd<cr>", { desc = "Terminal (cwd)" })
+map("n", "<c-/>", "<cmd>ToggleTerm<cr>", { desc = "Terminal (root dir)" })
+map("n", "<c-_>", "<cmd>ToggleTerm<cr>", { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
