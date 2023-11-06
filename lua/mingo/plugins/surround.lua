@@ -5,7 +5,7 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
-		config = function(opts)
+		config = function(_, opts)
 			local ft = vim.bo.filetype
 			local npairs = require("nvim-autopairs")
 			npairs.setup(opts)
