@@ -11,6 +11,7 @@ return {
 			npairs.setup(opts)
 			if ft == "verilog" or ft == "systemverilog" then
 				npairs.remove_rule("`")
+				npairs.remove_rule("'")
 			end
 		end,
 	},
