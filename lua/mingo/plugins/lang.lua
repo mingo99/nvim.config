@@ -31,14 +31,6 @@ return {
         },
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "lua", "luadoc", "luap" })
-			end
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			-- make sure mason installs the server
@@ -63,14 +55,6 @@ return {
 	},
 
 	-- json
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "json", "json5", "jsonc" })
-			end
-		end,
-	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -101,14 +85,6 @@ return {
 
 	-- hdl
 	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "verilog" })
-			end
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			-- make sure mason installs the server
@@ -138,25 +114,7 @@ return {
 		},
 	},
 
-	-- make
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "make" })
-			end
-		end,
-	},
-
 	-- python
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "ninja", "python", "rst", "toml" })
-			end
-		end,
-	},
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
@@ -195,7 +153,7 @@ return {
 	},
 
 	-- nushell
-	-- url:
+	-- url: https://github.com/LhKipp/nvim-nu
 	{
 		"LhKipp/nvim-nu",
 		build = ":TSInstall nu",
