@@ -118,8 +118,8 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 
 -- floating terminal
-map("n", "<leader>tt", "<cmd>Floaterm root<cr>", { desc = "Terminal (root dir)" })
-map("n", "<leader>tT", "<cmd>Floaterm cwd<cr>", { desc = "Terminal (cwd)" })
+map("n", "<leader>ft", "<cmd>Floaterm root<cr>", { desc = "Terminal (root dir)" })
+map("n", "<leader>fT", "<cmd>Floaterm cwd<cr>", { desc = "Terminal (cwd)" })
 map("n", "<c-/>", "<cmd>ToggleTerm<cr>", { desc = "Terminal (root dir)" })
 map("n", "<c-_>", "<cmd>ToggleTerm<cr>", { desc = "which_key_ignore" })
 

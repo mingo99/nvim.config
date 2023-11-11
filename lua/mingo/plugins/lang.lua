@@ -152,6 +152,22 @@ return {
 		keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
 	},
 
+	-- yaml
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				yamlls = {
+					settings = {
+						shema = {
+							["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+						},
+					},
+				},
+			},
+		},
+	},
+
 	-- nushell
 	-- url: https://github.com/LhKipp/nvim-nu
 	{

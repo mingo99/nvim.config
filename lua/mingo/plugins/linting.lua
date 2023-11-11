@@ -8,14 +8,15 @@ return {
 		local lint = require("lint")
 
 		-- customize linter
-		lint.linters.verible = {
+		lint.linters.veriblelint = {
 			cmd = "verible-verilog-lint",
 		}
 
 		lint.linters_by_ft = {
 			python = { "pylint" },
-			verilog = { "verible" },
+			verilog = { "veriblelint" },
 			markdown = { "vale" },
+			yaml = { "yamllint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -27,7 +28,7 @@ return {
 			end,
 		})
 
-		vim.keymap.set("n", "<leader>tl", function()
+		vim.keymap.set("n", "gl", function()
 			lint.try_lint()
 		end, { desc = "Trigger linting for current file" })
 	end,

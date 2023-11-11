@@ -13,11 +13,17 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 -- path: ~/.config/nvim/lua/plugins
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("mingo.plugins")
+local opts = {
+	ui = {
+		border = "rounded",
+		title = "lazy.nvim",
+	},
+}
+require("lazy").setup("mingo.plugins", opts)
 
 -- Colorscheme
 vim.cmd([[colorscheme tokyonight]])

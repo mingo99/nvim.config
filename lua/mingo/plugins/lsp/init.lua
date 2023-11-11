@@ -156,10 +156,15 @@ return {
 					return not is_deno(root_dir)
 				end)
 			end
+			local lspconfig_windows = require("lspconfig.ui.windows")
+			lspconfig_windows.default_options = {
+				border = "rounded",
+			}
 		end,
 	},
 
 	-- cmdline tools and lsp servers
+	-- url: https://github.com/williamboman/mason.nvim
 	{
 
 		"williamboman/mason.nvim",
@@ -170,6 +175,15 @@ return {
 			ensure_installed = {
 				"stylua",
 				"shfmt",
+			},
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+				border = "rounded",
+				title = "Mason",
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}

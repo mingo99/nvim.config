@@ -9,7 +9,7 @@ return {
 
 		conform.setup({
 			formatters = {
-				verible = {
+				veriblefmt = {
 					command = "verible-verilog-format",
 				},
 			},
@@ -18,7 +18,8 @@ return {
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				verilog = { "verible" },
+				verilog = { "veriblefmt" },
+				yaml = { "yamlfmt", "yamlfix" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
