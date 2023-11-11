@@ -14,8 +14,8 @@ return {
 				},
 			},
 			formatters_by_ft = {
-				json = { "prettier" },
-				markdown = { "prettier" },
+				json = { "jq" },
+				markdown = { "markdownlint", "markdown-toc" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				verilog = { "veriblefmt" },

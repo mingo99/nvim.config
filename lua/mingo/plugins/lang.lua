@@ -131,7 +131,7 @@ return {
 						},
 					},
 				},
-				ruff_lsp = {},
+				-- ruff_lsp = {},
 			},
 		},
 		setup = {

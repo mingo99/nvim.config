@@ -13,9 +13,9 @@ return {
 		}
 
 		lint.linters_by_ft = {
-			python = { "pylint" },
 			verilog = { "veriblelint" },
-			markdown = { "vale" },
+			markdown = { "markdownlint" },
+			json = { "jsonlint" },
 			yaml = { "yamllint" },
 		}
 
@@ -27,6 +27,10 @@ return {
 				lint.try_lint()
 			end,
 		})
+
+		vim.api.nvim_create_user_command("LintInfo", function()
+			print(vim.inspect(lint.linters_by_ft[vim.bo.filetype]))
+		end, { nargs = 0 })
 
 		vim.keymap.set("n", "gl", function()
 			lint.try_lint()
