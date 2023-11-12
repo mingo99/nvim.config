@@ -46,23 +46,27 @@ return {
 							function() return require("noice").api.status.command.get() end,
 							cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
 							color = Util.fg("Statement"),
+							separator = "",
 						},
      	 	 	 	 	-- stylua: ignore
      	 	 	 	 	{
      	 	 	 	 	 	function() return require("noice").api.status.mode.get() end,
      	 	 	 	 	 	cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
      	 	 	 	 	 	color = Util.fg("Constant"),
+							separator = "",
      	 	 	 	 	},
      	 	 	 	 	-- stylua: ignore
      	 	 	 	 	{
      	 	 	 	 	 	function() return "  " .. require("dap").status() end,
      	 	 	 	 	 	cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
      	 	 	 	 	 	color = Util.fg("Debug"),
+							separator = "",
      	 	 	 	 	},
 						{
 							require("lazy.status").updates,
 							cond = require("lazy.status").has_updates,
 							color = Util.fg("Special"),
+							separator = "",
 						},
 						{
 							"diagnostics",
@@ -72,6 +76,7 @@ return {
 								info = icons.diagnostics.Info,
 								hint = icons.diagnostics.Hint,
 							},
+							separator = "",
 						},
 						{
 							-- Lsp server name
