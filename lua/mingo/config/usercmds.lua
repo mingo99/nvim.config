@@ -59,6 +59,30 @@ vim.api.nvim_create_user_command("Joshuto", function()
 	joshuto_toggle()
 end, { nargs = 0 })
 
+local function yazi_toggle()
+	local yazi = Terminal:new({
+		title = "Yazi",
+		cmd = "yazi",
+		dir = vim.loop.cwd(),
+		direction = "float",
+		hidden = true,
+		highlights = {
+			FloatBorder = {
+				guifg = float_border_hl.fg,
+			},
+		},
+		float_opts = {
+			border = "rounded",
+		},
+	})
+	yazi:toggle()
+	set_esc_ctrl_hjkl_false()
+end
+
+vim.api.nvim_create_user_command("Yazi", function()
+	yazi_toggle()
+end, { nargs = 0 })
+
 local function floaterm_toggle(dir)
 	local floaterm = Terminal:new({
 		title = "Floaterm",

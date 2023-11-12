@@ -149,5 +149,6 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- lazygit
 map("n", "<leader>gg", "<cmd>Lazygit<cr>", { desc = "Lazygit (root dir)" })
 
--- file explorer: joshuto
+-- file explorer: joshuto,yazi
 map("n", "<leader>jj", "<cmd>Joshuto<cr>", { desc = "Joshuto (cwd)" })
+map("n", "<leader>yy", "<cmd>Yazi<cr>", { desc = "Yazi (cwd)" })
