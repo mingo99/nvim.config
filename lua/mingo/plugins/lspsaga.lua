@@ -4,7 +4,7 @@ return {
 	"nvimdev/lspsaga.nvim",
 	event = "LspAttach",
 	cmd = "Lspsaga",
-	ft = { "c", "cpp", "json", "lua", "verilog", "python", "markdown", "make" },
+	ft = { "c", "cpp", "json", "lua", "verilog", "python", "markdown", "make", "yaml" },
 	config = function()
 		require("lspsaga").setup({
 			lightbulb = {

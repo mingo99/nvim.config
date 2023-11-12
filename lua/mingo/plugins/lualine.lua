@@ -8,10 +8,13 @@ return {
 		opts = function()
 			local Util = require("mingo.util")
 			local icons = Util.icons
+			local custom_auto = require("lualine.themes.auto")
+			custom_auto.normal.c.bg = "None"
 
 			return {
 				options = {
-					theme = "auto",
+					-- theme = "auto",
+					theme = custom_auto,
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 				},
@@ -26,6 +29,7 @@ return {
 								modified = icons.git.modified,
 								removed = icons.git.removed,
 							},
+							separator = "",
 						},
 						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 						{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
@@ -92,9 +96,10 @@ return {
 							end,
 							icon = "",
 							color = { fg = "#87ceeb" },
+							separator = "",
 						},
 						{ "fileformat", separator = "", color = { fg = "#94b963" } },
-						{ "encoding", padding = { left = 0, right = 1 }, color = { fg = "#94b963" } },
+						{ "encoding", separator = "", padding = { left = 0, right = 1 }, color = { fg = "#94b963" } },
 					},
 					lualine_y = {
 						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
