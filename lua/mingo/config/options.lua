@@ -2,6 +2,9 @@
 -- Add any additional options here
 local opt = vim.opt
 
+-- Truecolor support
+opt.termguicolors = true
+
 -- Enable number and relativenumber of line
 opt.relativenumber = true
 opt.number = true
@@ -14,6 +17,7 @@ opt.autoindent = true
 
 -- cursorline
 opt.cursorline = true
+
 -- Open mouse opration
 opt.mouse:append("a")
 
