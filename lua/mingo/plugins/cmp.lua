@@ -10,6 +10,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
 		},
 		opts = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -19,9 +20,35 @@ return {
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			return {
-				completion = {
-					completeopt = "menu,menuone,noinsert",
+				window = {
+					completion = {
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+						col_offset = -3,
+						side_padding = 0,
+						border = "rounded",
+						scrollbar = true,
+					},
+					documentation = {
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+						border = "rounded",
+						scrollbar = true,
+					},
 				},
+				formatting = {
+					fields = { "kind", "abbr", "menu" },
+					format = function(entry, vim_item)
+						local kind =
+							require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+						local strings = vim.split(kind.kind, "%s", { trimempty = true })
+						kind.kind = " " .. (strings[1] or "") .. " "
+						kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+						return kind
+					end,
+				},
+				-- completion = {
+				-- 	completeopt = "menu,menuone,noinsert",
+				-- },
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
