@@ -168,6 +168,16 @@ return {
 		},
 	},
 
+	-- toml
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				taplo = {},
+			},
+		},
+	},
+
 	-- nushell
 	-- url: https://github.com/LhKipp/nvim-nu
 	{

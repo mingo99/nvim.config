@@ -20,6 +20,7 @@ return {
 				python = { "isort", "black" },
 				verilog = { "veriblefmt" },
 				yaml = { "yamlfmt", "yamlfix" },
+				toml = { "taplo" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

@@ -10,6 +10,14 @@ return {
 		-- customize linter
 		lint.linters.veriblelint = {
 			cmd = "verible-verilog-lint",
+			stdin = true,
+			append_fname = true,
+		}
+		lint.linters.tomllint = {
+			cmd = "taplo",
+			stdin = true,
+			append_fname = true,
+			args = { "lint" },
 		}
 
 		lint.linters_by_ft = {
@@ -17,6 +25,7 @@ return {
 			markdown = { "markdownlint" },
 			json = { "jsonlint" },
 			yaml = { "yamllint" },
+			toml = { "tomllint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
