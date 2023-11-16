@@ -107,13 +107,9 @@ return {
 		-- auto instantiation for verilog
 		-- url: https://github.com/mingo99/verilog-autoinst.nvim
 		"mingo99/verilog-autoinst.nvim",
-		event = "VeryLazy",
 		cmd = "AutoInst",
 		keys = { { "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" } },
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		opts = {
-			cmd = "AutoInst",
-		},
 	},
 
 	-- python
