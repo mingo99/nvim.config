@@ -6,9 +6,9 @@ return {
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
 		config = function(_, opts)
-			local ft = vim.bo.filetype
 			local npairs = require("nvim-autopairs")
 			npairs.setup(opts)
+			local ft = vim.bo.filetype
 			if ft == "verilog" or ft == "systemverilog" then
 				npairs.remove_rule("`")
 				npairs.remove_rule("'")
