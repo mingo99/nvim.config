@@ -36,6 +36,12 @@ return {
 				},
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
+					-- format = require("lspkind").cmp_format({
+					-- 	mode = "symbol",
+					-- 	maxwidth = 50,
+					-- 	ellipsis_char = "...",
+					-- 	symbol_map = { Codeium = "" },
+					-- }),
 					format = function(entry, vim_item)
 						local kind =
 							require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
@@ -72,6 +78,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
+					{ name = "codeium" },
 				}),
 				experimental = {
 					ghost_text = {
