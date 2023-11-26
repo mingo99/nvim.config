@@ -38,34 +38,46 @@ return {
 							symbols = { modified = "  ", readonly = "", unnamed = "" },
 							color = { fg = "#c0caf5" },
 						},
-     	 	 	 	 	-- stylua: ignore
-     	 	 	 	 	{
-     	 	 	 	 	 	function() return require("nvim-navic").get_location() end,
-     	 	 	 	 	 	cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
-     	 	 	 	 	},
+						{
+							function()
+								return require("nvim-navic").get_location()
+							end,
+							cond = function()
+								return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+							end,
+						},
 					},
 					lualine_x = {
-      	 	 	 	 	-- stylua: ignore
 						{
-							function() return require("noice").api.status.command.get() end,
-							cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+							function()
+								return require("noice").api.status.command.get()
+							end,
+							cond = function()
+								return package.loaded["noice"] and require("noice").api.status.command.has()
+							end,
 							color = Util.fg("Statement"),
 							separator = "",
 						},
-     	 	 	 	 	-- stylua: ignore
-     	 	 	 	 	{
-     	 	 	 	 	 	function() return require("noice").api.status.mode.get() end,
-     	 	 	 	 	 	cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-     	 	 	 	 	 	color = Util.fg("Constant"),
+						{
+							function()
+								return require("noice").api.status.mode.get()
+							end,
+							cond = function()
+								return package.loaded["noice"] and require("noice").api.status.mode.has()
+							end,
+							color = Util.fg("Constant"),
 							separator = "",
-     	 	 	 	 	},
-     	 	 	 	 	-- stylua: ignore
-     	 	 	 	 	{
-     	 	 	 	 	 	function() return "  " .. require("dap").status() end,
-     	 	 	 	 	 	cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-     	 	 	 	 	 	color = Util.fg("Debug"),
+						},
+						{
+							function()
+								return "  " .. require("dap").status()
+							end,
+							cond = function()
+								return package.loaded["dap"] and require("dap").status() ~= ""
+							end,
+							color = Util.fg("Debug"),
 							separator = "",
-     	 	 	 	 	},
+						},
 						{
 							require("lazy.status").updates,
 							cond = require("lazy.status").has_updates,

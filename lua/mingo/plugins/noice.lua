@@ -37,6 +37,9 @@ return {
 					padding = { 0, 1 },
 				},
 			},
+			split = {
+				scrollbar = false,
+			},
 		},
 		lsp = {
 			override = {
