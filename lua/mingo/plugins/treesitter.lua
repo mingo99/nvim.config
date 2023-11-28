@@ -120,6 +120,11 @@ return {
 					show_help = "?",
 				},
 			},
+			query_linter = {
+				enable = true,
+				use_virtual_text = true,
+				lint_events = { "BufWrite", "CursorHold" },
+			},
 		},
 		---@param opts TSConfig
 		config = function(_, opts)
