@@ -2,6 +2,8 @@
 -- Add any additional options here
 local opt = vim.opt
 
+vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+
 -- Truecolor support
 opt.termguicolors = true
 

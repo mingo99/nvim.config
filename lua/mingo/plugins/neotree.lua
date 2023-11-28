@@ -62,10 +62,13 @@ return {
 		end
 	end,
 	opts = {
+		close_if_last_window = false,
+		popup_border_style = "rounded",
 		sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 		open_files_do_not_replace_types = { "terminal", "trouble", "qf", "outline" },
 		filesystem = {
-			bind_to_cwd = false,
+			-- bind_to_cwd = false,
+			bind_to_cwd = true,
 			follow_current_file = { enabled = true },
 			use_libuv_file_watcher = true,
 			filtered_items = {
@@ -92,13 +95,6 @@ return {
 				},
 			},
 		},
-		window = {
-			position = "left",
-			width = 30,
-			mappings = {
-				["<space>"] = "none",
-			},
-		},
 		default_component_configs = {
 			indent = {
 				with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
@@ -109,7 +105,7 @@ return {
 		},
 		source_selector = {
 			winbar = false,
-			statusline = true,
+			statusline = false,
 		},
 	},
 	config = function(_, opts)

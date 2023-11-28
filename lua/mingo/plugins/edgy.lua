@@ -60,7 +60,7 @@ return {
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "filesystem"
 						end,
-						pinned = true,
+						pinned = false,
 						open = function()
 							vim.api.nvim_input("<esc><space>e")
 						end,
@@ -73,7 +73,7 @@ return {
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "git_status"
 						end,
-						pinned = true,
+						pinned = false,
 						open = "Neotree position=right git_status",
 					},
 					{
@@ -82,20 +82,11 @@ return {
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "buffers"
 						end,
-						pinned = true,
+						pinned = false,
 						open = "Neotree position=top buffers",
 					},
 					"neo-tree",
 				},
-				-- right = {
-				-- {
-				-- title = "Outline",
-				-- ft = "Outline",
-				-- size = { width = 0.2 },
-				-- pinned = true,
-				-- open = "SymbolsOutlineOpen",
-				-- },
-				-- },
 				keys = {
 					-- increase width
 					["<c-Right>"] = function(win)
@@ -126,36 +117,5 @@ return {
 				or { "terminal", "Trouble", "qf", "Outline" }
 			table.insert(opts.open_files_do_not_replace_types, "edgy")
 		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		optional = true,
-		-- opts = function()
-		-- 	local Offset = require("bufferline.offset")
-		-- 	if not Offset.edgy then
-		-- 		local get = Offset.get
-		-- 		---@diagnostic disable-next-line
-		-- 		Offset.get = function()
-		-- 			if package.loaded.edgy then
-		-- 				local layout = require("edgy.config").layout
-		-- 				local ret = { left = "", left_size = 0, right = "", right_size = 0 }
-		-- 				for _, pos in ipairs({ "left", "right" }) do
-		-- 					local sb = layout[pos]
-		-- 					if sb and #sb.wins > 0 then
-		-- 						local title = " Sidebar" .. string.rep(" ", sb.bounds.width - 8)
-		-- 						ret[pos] = "%#EdgyTitle#" .. title .. "%*" .. "%#WinSeparator#│%*"
-		-- 						ret[pos .. "_size"] = sb.bounds.width
-		-- 					end
-		-- 				end
-		-- 				ret.total_size = ret.left_size + ret.right_size
-		-- 				if ret.total_size > 0 then
-		-- 					return ret
-		-- 				end
-		-- 			end
-		-- 			return get()
-		-- 		end
-		-- 		Offset.edgy = true
-		-- 	end
-		-- end,
 	},
 }
