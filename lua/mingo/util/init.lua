@@ -278,6 +278,15 @@ function M.toggle_diagnostics()
 	end
 end
 
+function M.toggle_autoformat()
+	vim.g.disable_autoformat = not vim.g.disable_autoformat
+	if vim.g.disable_autoformat then
+		Util.warn("Disabled autoformat", { title = "Autoformat" })
+	else
+		Util.info("Enabled autoformat", { title = "Autoformat" })
+	end
+end
+
 function M.deprecate(old, new)
 	Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
 end

@@ -8,11 +8,11 @@ return {
 		local lint = require("lint")
 
 		-- customize linter
-		lint.linters.veriblelint = {
-			cmd = "verible-verilog-lint",
-			stdin = true,
-			append_fname = true,
-		}
+		-- lint.linters.veriblelint = {
+		-- 	cmd = "verible-verilog-lint",
+		-- 	stdin = true,
+		-- 	append_fname = true,
+		-- }
 		lint.linters.tomllint = {
 			cmd = "taplo",
 			stdin = true,
@@ -21,7 +21,7 @@ return {
 		}
 
 		lint.linters_by_ft = {
-			verilog = { "veriblelint" },
+			-- verilog = { "veriblelint" },
 			markdown = { "markdownlint" },
 			json = { "jsonlint" },
 			yaml = { "yamllint" },
