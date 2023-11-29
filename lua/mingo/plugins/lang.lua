@@ -95,8 +95,6 @@ return {
 					end,
 					cmd = {
 						"verible-verilog-ls",
-						-- "--wrap_end_else_clauses",
-						"--indentation_spaces=4",
 						"--rules_config_search",
 					},
 				},

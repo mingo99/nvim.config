@@ -6,19 +6,26 @@ return {
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
 		local conform = require("conform")
+		local home_dir = vim.fn.expand("~")
 
 		conform.setup({
-			-- formatters = {
-			-- 	veriblefmt = {
-			-- 		command = "verible-verilog-format",
-			-- 	},
-			-- },
+			formatters = {
+				veriblefmt = {
+					command = home_dir .. "/.local/share/nvim/mason/bin/verible-verilog-format",
+					args = {
+						"--indentation_spaces=4",
+						"-",
+					},
+					stdin = true,
+				},
+			},
 			formatters_by_ft = {
 				json = { "jq" },
 				markdown = { "markdownlint", "markdown-toc" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				-- verilog = { "veriblefmt" },
+				verilog = { "veriblefmt" },
+				systemverilog = { "veriblefmt" },
 				yaml = { "yamlfmt", "yamlfix" },
 				toml = { "taplo" },
 			},
@@ -29,17 +36,6 @@ return {
 				end
 				return { timeout_ms = 500, lsp_fallback = true }
 			end,
-			-- function()
-			-- 	-- Disable with a global variable
-			-- 	if vim.g.disable_autoformat then
-			-- 		return
-			-- 	end
-			-- 	return {
-			-- 		lsp_fallback = true,
-			-- 		async = false,
-			-- 		timeout_ms = 500,
-			-- 	}
-			-- end,
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
