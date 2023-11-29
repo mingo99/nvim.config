@@ -10,7 +10,7 @@ return {
 			lightbulb = {
 				enable = true,
 				sign = false,
-				virtual_text = true,
+				virtual_text = false,
 				debounce = 10,
 				sign_priority = 40,
 			},
