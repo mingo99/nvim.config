@@ -108,7 +108,7 @@ return {
 		cmd = "AutoInst",
 		keys = { { "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" } },
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		opts = { fmt = true },
+		opts = {},
 	},
 
 	-- python
