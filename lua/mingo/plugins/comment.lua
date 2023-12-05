@@ -43,25 +43,25 @@ return {
 				---LHS of toggle mappings in NORMAL mode
 				toggler = {
 					---Line-comment toggle keymap
-					line = "gcc",
+					line = "<leader>cc",
 					---Block-comment toggle keymap
-					block = "gbc",
+					block = "<leader>cb",
 				},
 				---LHS of operator-pending mappings in NORMAL and VISUAL mode
 				opleader = {
 					---Line-comment keymap
-					line = "gc",
+					line = "<leader>cc",
 					---Block-comment keymap
-					block = "gb",
+					block = "<leader>cb",
 				},
 				---LHS of extra mappings
 				extra = {
 					---Add comment on the line above
-					above = "gcO",
+					above = "<leader>cO",
 					---Add comment on the line below
-					below = "gco",
+					below = "<leader>co",
 					---Add comment at the end of line
-					eol = "gca",
+					eol = "<leader>ce",
 				},
 				---Enable keybindings
 				---NOTE: If given `false` then the plugin won't create any mappings

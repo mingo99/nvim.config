@@ -6,6 +6,7 @@ return {
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
 		keys = {
+			{ "gb", "<Cmd>BufferLinePick<CR>", desc = "Select buffer in view" },
 			{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
 			{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
 		},
@@ -24,6 +25,14 @@ return {
 					return vim.trim(ret)
 				end,
 				separator_style = { "", "" },
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "Neo Tree",
+						highlight = "Directory",
+						text_align = "center",
+					},
+				},
 			},
 		},
 	},
