@@ -21,6 +21,7 @@ return {
         keys = {
             {
                 "<tab>",
+                
                 function()
                     return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
                 end,
@@ -108,7 +109,7 @@ return {
 		cmd = "AutoInst",
 		keys = { { "<leader>fv", "<cmd>AutoInst<cr>", desc = "Automatic instantiation for verilog" } },
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		opts = {},
+		opts = { fmt = true },
 	},
 
 	-- python
