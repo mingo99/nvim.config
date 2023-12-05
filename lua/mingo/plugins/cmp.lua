@@ -42,7 +42,7 @@ return {
 							require("lspkind").cmp_format({
 								mode = "symbol_text",
 								maxwidth = 50,
-								symbol_map = { Copilot = "" },
+								symbol_map = { Copilot = "" },
 							})(entry, vim_item)
 						local strings = vim.split(kind.kind, "%s", { trimempty = true })
 						kind.kind = " " .. (strings[1] or "") .. " "
@@ -77,7 +77,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
-					-- { name = "copilot", group_index = 1, priority = 100 },
+					{ name = "copilot", group_index = 1, priority = 100 },
 				}),
 				experimental = {
 					ghost_text = {

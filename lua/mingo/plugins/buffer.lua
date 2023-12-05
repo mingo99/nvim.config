@@ -24,19 +24,11 @@ return {
 					return vim.trim(ret)
 				end,
 				separator_style = { "", "" },
-				offsets = {
-					{
-						filetype = "neo-tree",
-						text = "Neo-tree",
-						highlight = "Directory",
-						text_align = "left",
-					},
-				},
 			},
 		},
 	},
 
-	-- buffer removing (unshow, delete, wipeout), which saves window layou
+	-- buffer removing (unshow, delete, wipeout), which saves window layout
 	-- url: https://github.com/echasnovski/mini.bufremove
 	{
 		"echasnovski/mini.bufremove",
