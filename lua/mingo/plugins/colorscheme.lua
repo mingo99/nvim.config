@@ -6,7 +6,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-			style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 			light_style = "day", -- The theme is used when the background is set to light
 			transparent = true, -- Enable this to disable setting the background color
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
@@ -31,8 +31,10 @@ return {
 
 			--- You can override specific color groups to use other groups or a hex color
 			--- function will be called with a ColorScheme table
-			---@param colors ColorScheme
-			on_colors = function(colors) end,
+			---@class colors
+			on_colors = function(colors)
+				colors.comment = "#6e6f70"
+			end,
 
 			--- You can override specific highlights to use other groups or a hex color
 			--- function will be called with a Highlights and ColorScheme table
@@ -40,7 +42,21 @@ return {
 			---@param colors ColorScheme
 			on_highlights = function(highlights, colors)
 				highlights.MsgArea = { bg = colors.none }
+				highlights.DiagnosticUnnecessary = { fg = colors.comment }
 			end,
 		}, -- Storm, Night, Moon, Day
+	},
+
+	-- nightfox
+	-- url: https://github.com/EdenEast/nightfox.nvim
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			options = {
+				transparent = true,
+			},
+		},
 	},
 }

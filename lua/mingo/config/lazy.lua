@@ -27,9 +27,7 @@ require("lazy").setup("mingo.plugins", opts)
 
 -- Colorscheme
 vim.cmd([[colorscheme tokyonight]])
--- vim.cmd([[colorscheme catppuccin]])
--- vim.cmd([[colorscheme darkplus]])
--- vim.cmd([[colorscheme onedark]])
+-- vim.cmd([[colorscheme carbonfox]])
 
 require("mingo.config.usercmds")
 require("mingo.config.autocmds")
