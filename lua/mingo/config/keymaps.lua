@@ -137,6 +137,7 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>wx", "<C-W>x", { desc = "Swap window", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -149,6 +150,5 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- lazygit
 map("n", "<leader>gg", "<cmd>Lazygit<cr>", { desc = "Lazygit (root dir)" })
 
--- file explorer: joshuto,yazi
-map("n", "<leader>jj", "<cmd>Joshuto<cr>", { desc = "Joshuto (cwd)" })
-map("n", "<leader>yy", "<cmd>Yazi<cr>", { desc = "Yazi (cwd)" })
+-- file explorer: yazi
+map("n", "<leader>jj", "<cmd>Yazi<cr>", { desc = "Yazi (cwd)" })

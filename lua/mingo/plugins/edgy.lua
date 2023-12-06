@@ -44,7 +44,7 @@ return {
 					{ ft = "qf", title = "QuickFix" },
 					{
 						ft = "help",
-						size = { height = 20 },
+						size = { height = math.floor(vim.o.lines * 0.5) },
 						-- don't open help files in edgy that we're editing
 						filter = function(buf)
 							return vim.bo[buf].buftype == "help"
@@ -106,6 +106,7 @@ return {
 					end,
 				},
 			}
+
 			return opts
 		end,
 	},

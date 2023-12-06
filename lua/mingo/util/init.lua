@@ -391,4 +391,12 @@ function M.get_upvalue(func, name)
 	end
 end
 
+function M.set_esc_ctrl_hjkl_false()
+	vim.keymap.set("t", "<esc>", "<esc>", { buffer = 0, nowait = true })
+	vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = 0, nowait = true })
+	vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = 0, nowait = true })
+	vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = 0, nowait = true })
+	vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = 0, nowait = true })
+end
+
 return M
