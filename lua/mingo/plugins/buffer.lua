@@ -30,7 +30,7 @@ return {
 						filetype = "neo-tree",
 						text = "Neo Tree",
 						highlight = "Directory",
-						text_align = "center",
+						text_align = "left",
 					},
 				},
 			},
