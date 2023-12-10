@@ -15,7 +15,7 @@ return {
 			},
 			lightbulb = {
 				enable = true,
-				sign = false,
+				sign = true,
 				virtual_text = false,
 				debounce = 10,
 				sign_priority = 40,

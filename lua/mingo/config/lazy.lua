@@ -1,5 +1,4 @@
--- map leader to <space>
-vim.g.mapleader = " "
+require("mingo.config.options")
 
 -- lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -31,5 +30,4 @@ vim.cmd([[colorscheme tokyonight]])
 
 require("mingo.config.usercmds")
 require("mingo.config.autocmds")
-require("mingo.config.options")
 require("mingo.config.keymaps")

@@ -31,10 +31,11 @@ return {
 			},
 			format_on_save = function()
 				-- Disable with a global or buffer-local variable
-				if vim.g.disable_autoformat then
+				if vim.g.autoformat then
+					return { timeout_ms = 500, lsp_fallback = true }
+				else
 					return
 				end
-				return { timeout_ms = 500, lsp_fallback = true }
 			end,
 		})
 
