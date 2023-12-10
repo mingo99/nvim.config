@@ -402,25 +402,6 @@ function M.set_esc_ctrl_hjkl_false()
 	vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = 0, nowait = true })
 end
 
-function M.foldtext()
-	local ok = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
-	local ret = ok and vim.treesitter.foldtext and vim.treesitter.foldtext()
-	if not ret or type(ret) == "string" then
-		ret = { { vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.lnum, false)[1], {} } }
-	end
-	table.insert(ret, { " " .. M.icons.misc.dots })
-
-	if not vim.treesitter.foldtext then
-		return table.concat(
-			vim.tbl_map(function(line)
-				return line[1]
-			end, ret),
-			" "
-		)
-	end
-	return ret
-end
-
 M.skip_foldexpr = {} ---@type table<number,boolean>
 local skip_check = assert(vim.loop.new_check())
 

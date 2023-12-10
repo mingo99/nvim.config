@@ -60,19 +60,15 @@ opt.fillchars = {
 	eob = " ",
 }
 
-if vim.fn.has("nvim-0.10") == 1 then
-	opt.smoothscroll = true
-end
-
 -- Folding
 opt.foldlevel = 99
-opt.foldtext = "v:lua.require'mingo.util'.foldtext()"
 
 if vim.fn.has("nvim-0.10") == 1 then
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "v:lua.require'mingo.util'.foldexpr()"
+	opt.smoothscroll = true
+	opt.foldmethod = "expr"
+	opt.foldexpr = "v:lua.require'mingo.util'.foldexpr()"
 else
-	vim.opt.foldmethod = "indent"
+	opt.foldmethod = "indent"
 end
 
 vim.o.formatexpr = "v:lua.require'mingo.util'.formatexpr()"
