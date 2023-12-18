@@ -115,7 +115,7 @@ return {
 								end
 								return msg
 							end,
-							icon = ",",
+							icon = " ",
 							color = { fg = "#87ceeb" },
 							separator = "",
 						},

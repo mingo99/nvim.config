@@ -5,8 +5,11 @@ return {
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
+		{
+			"nvim-tree/nvim-web-devicons",
+			commit = "8b2e5ef",
+		}, -- not strictly required, but recommended
 		{
 			-- only needed if you want to use the commands with "_with_window_picker" suffix
 			"s1n7ax/nvim-window-picker",

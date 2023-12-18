@@ -34,7 +34,7 @@ return {
 	end,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter", -- optional
-		"nvim-tree/nvim-web-devicons", -- optional
+		-- "nvim-tree/nvim-web-devicons", -- optional
 	},
 	keys = {
 		{ "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next Diagnostic" },
