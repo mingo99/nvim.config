@@ -7,8 +7,12 @@ return {
 	ft = { "c", "cpp", "json", "lua", "verilog", "python", "markdown", "make", "yaml" },
 	config = function()
 		require("lspsaga").setup({
+			symbol_in_winbar = {
+				enable = true,
+				color_mode = "background",
+			},
 			outline = {
-				layout = "float",
+				-- layout = "float",
 				keys = {
 					jump = "<cr>",
 				},

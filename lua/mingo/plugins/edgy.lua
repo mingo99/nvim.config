@@ -55,12 +55,12 @@ return {
 				},
 				left = {
 					{
-						title = "Explorer",
 						ft = "neo-tree",
+						title = "Explorer",
 						filter = function(buf)
 							return vim.b[buf].neo_tree_source == "filesystem"
 						end,
-						pinned = false,
+						pinned = true,
 						open = function()
 							vim.api.nvim_input("<esc><space>e")
 						end,
