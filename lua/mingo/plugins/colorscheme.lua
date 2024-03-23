@@ -60,7 +60,8 @@ return {
 		},
 	},
 
-	--
+	-- catppuccin
+	-- url: https://github.com/catppuccino/nvim
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
