@@ -178,8 +178,8 @@ return {
 
 	-- nushell
 	-- url: https://github.com/LhKipp/nvim-nu
-	{
-		"LhKipp/nvim-nu",
-		build = ":TSInstall nu",
-	},
+	-- {
+	-- 	"LhKipp/nvim-nu",
+	-- 	build = ":TSInstall nu",
+	-- },
 }

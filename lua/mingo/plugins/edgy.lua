@@ -54,18 +54,18 @@ return {
 					{ title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
 				},
 				left = {
-					{
-						ft = "neo-tree",
-						title = "Explorer",
-						filter = function(buf)
-							return vim.b[buf].neo_tree_source == "filesystem"
-						end,
-						pinned = true,
-						open = function()
-							vim.api.nvim_input("<esc><space>e")
-						end,
-						size = { height = 0.5 },
-					},
+					-- {
+					-- 	ft = "neo-tree",
+					-- 	title = "Explorer",
+					-- 	filter = function(buf)
+					-- 		return vim.b[buf].neo_tree_source == "filesystem"
+					-- 	end,
+					-- 	pinned = true,
+					-- 	open = function()
+					-- 		vim.api.nvim_input("<esc><space>e")
+					-- 	end,
+					-- 	size = { height = 0.5 },
+					-- },
 					{ title = "Neotest Summary", ft = "neotest-summary" },
 					{
 						title = "Git",
