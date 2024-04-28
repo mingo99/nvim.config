@@ -53,40 +53,40 @@ return {
 					{ ft = "spectre_panel", size = { height = 0.4 } },
 					{ title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
 				},
-				left = {
-					-- {
-					-- 	ft = "neo-tree",
-					-- 	title = "Explorer",
-					-- 	filter = function(buf)
-					-- 		return vim.b[buf].neo_tree_source == "filesystem"
-					-- 	end,
-					-- 	pinned = true,
-					-- 	open = function()
-					-- 		vim.api.nvim_input("<esc><space>e")
-					-- 	end,
-					-- 	size = { height = 0.5 },
-					-- },
-					{ title = "Neotest Summary", ft = "neotest-summary" },
-					{
-						title = "Git",
-						ft = "neo-tree",
-						filter = function(buf)
-							return vim.b[buf].neo_tree_source == "git_status"
-						end,
-						pinned = false,
-						open = "Neotree position=right git_status",
-					},
-					{
-						title = "Buffers",
-						ft = "neo-tree",
-						filter = function(buf)
-							return vim.b[buf].neo_tree_source == "buffers"
-						end,
-						pinned = false,
-						open = "Neotree position=top buffers",
-					},
-					"neo-tree",
-				},
+				-- left = {
+				-- 	{
+				-- 		title = "Explorer",
+				-- 		ft = "neo-tree",
+				-- 		filter = function(buf)
+				-- 			return vim.b[buf].neo_tree_source == "filesystem"
+				-- 		end,
+				-- 		pinned = false,
+				-- 		open = function()
+				-- 			vim.api.nvim_input("<esc><space>e")
+				-- 		end,
+				-- 		size = { height = 0.5 },
+				-- 	},
+				-- 	{ title = "Neotest Summary", ft = "neotest-summary" },
+				-- 	{
+				-- 		title = "Git",
+				-- 		ft = "neo-tree",
+				-- 		filter = function(buf)
+				-- 			return vim.b[buf].neo_tree_source == "git_status"
+				-- 		end,
+				-- 		pinned = true,
+				-- 		open = "Neotree position=right git_status",
+				-- 	},
+				-- 	{
+				-- 		title = "Buffers",
+				-- 		ft = "neo-tree",
+				-- 		filter = function(buf)
+				-- 			return vim.b[buf].neo_tree_source == "buffers"
+				-- 		end,
+				-- 		pinned = true,
+				-- 		open = "Neotree position=top buffers",
+				-- 	},
+				-- 	-- "neo-tree",
+				-- },
 				keys = {
 					-- increase width
 					["<c-Right>"] = function(win)

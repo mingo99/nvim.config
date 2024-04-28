@@ -3,38 +3,7 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-		{
-			"nvim-tree/nvim-web-devicons",
-			-- commit = "8b2e5ef",
-		}, -- not strictly required, but recommended
-		{
-			-- only needed if you want to use the commands with "_with_window_picker" suffix
-			"s1n7ax/nvim-window-picker",
-			name = "window-picker",
-			event = "VeryLazy",
-			version = "2.*",
-			config = function()
-				require("window-picker").setup({
-					autoselect_one = true,
-					include_current = false,
-					filter_rules = {
-						-- filter using buffer options
-						bo = {
-							-- if the file type is one of following, the window will be ignored
-							filetype = { "neo-tree", "neo-tree-popup", "notify" },
-
-							-- if the buffer type is one of following, the window will be ignored
-							buftype = { "terminal", "quickfix" },
-						},
-					},
-					other_win_hl_color = "#e35e4f",
-				})
-			end,
-		},
-	},
+	cmd = "NeoTree",
 	keys = {
 		{
 			"<leader>fe",
@@ -52,6 +21,20 @@ return {
 		},
 		{ "<leader>e", "<leader>fe", desc = "explorer neotree (root dir)", remap = true },
 		{ "<leader>E", "<leader>fE", desc = "explorer neotree (cwd)", remap = true },
+		{
+			"<leader>ge",
+			function()
+				require("neo-tree.command").execute({ source = "git_status", toggle = true })
+			end,
+			desc = "Git Explorer",
+		},
+		{
+			"<leader>be",
+			function()
+				require("neo-tree.command").execute({ source = "buffers", toggle = true })
+			end,
+			desc = "Buffer Explorer",
+		},
 	},
 	deactivate = function()
 		vim.cmd([[neotree close]])
@@ -98,17 +81,38 @@ return {
 				},
 			},
 		},
+		window = {
+			width = 25,
+			mappings = {
+				["<space>"] = "none",
+				["Y"] = {
+					function(state)
+						local node = state.tree:get_node()
+						local path = node:get_id()
+						vim.fn.setreg("+", path, "c")
+					end,
+					desc = "Copy Path to Clipboard",
+				},
+				["O"] = {
+					function(state)
+						require("lazy.util").open(state.tree:get_node().path, { system = true })
+					end,
+					desc = "Open with System Application",
+				},
+			},
+		},
 		default_component_configs = {
 			indent = {
+				indent_size = 2,
 				with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
 				expander_collapsed = "",
 				expander_expanded = "",
-				expander_highlight = "neotreeexpander",
+				expander_highlight = "NeoTreeExpander",
 			},
 		},
 		source_selector = {
 			winbar = false,
-			statusline = false,
+			statusline = true,
 		},
 	},
 	config = function(_, opts)
