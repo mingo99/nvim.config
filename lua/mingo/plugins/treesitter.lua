@@ -84,6 +84,9 @@ return {
 				"toml",
 				"make",
 				"verilog",
+				"http",
+				"xml",
+				"graphql",
 			},
 			incremental_selection = {
 				enable = true,
